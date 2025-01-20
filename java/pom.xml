@@ -4,10 +4,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.aicockpit</groupId>
-    <artifactId>decisionapi</artifactId>
+    <groupId>de.starwit</groupId>
+    <artifactId>api-generator</artifactId>
     <version>0.0.1</version>
-    <description>Decision API</description>
+    <description>AI-Cockpit API-Generator</description>
     <packaging>pom</packaging>
 
     <properties>
@@ -15,7 +15,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <openapi-version>2.3.0</openapi-version>
         <jackson-2-version>2.7.4</jackson-2-version>
-    </properties>    
+    </properties>
 
     <build>
         <plugins>
@@ -34,11 +34,10 @@
                                 <useJakartaEe>true</useJakartaEe>
                             </configOptions>
                             <inputSpec>
-                                ../ai-cockpit-repo/api/decision/ai-cockpit-decision.yaml
+                                ../ai-cockpit-api/api/decision/ai-cockpit-decision.yaml
                             </inputSpec>
                             <generatorName>java</generatorName>
-                            <apiPackage>de.aicockpit.decision</apiPackage>
-                            <modelPackage>de.aicockpit.decision.model</modelPackage>
+                            <modelPackage>de.starwit.aic.model</modelPackage>
                             <generateSupportingFiles>true</generateSupportingFiles>
                             <generateApis>false</generateApis>
                             <generateModels>true</generateModels>
@@ -50,4 +49,35 @@
             </plugin>            
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub Packages</name>
+          <url>https://maven.pkg.github.com/KI-Cockpit/ai-cockpit-api</url>
+        </repository>
+    </distributionManagement>    
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.gsonfire</groupId>
+            <artifactId>gson-fire</artifactId>
+            <version>1.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+            <version>3.9.0</version>
+        </dependency>
+    </dependencies>
 </project>

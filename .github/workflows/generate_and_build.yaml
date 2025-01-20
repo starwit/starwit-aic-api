@@ -35,7 +35,7 @@ jobs:
         - name: Generate and build transparency lib
           working-directory: ./java
           run: |
-            mvn package
+            mvn compile
 
         - name: Test 
           run: |
