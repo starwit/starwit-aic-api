@@ -2,6 +2,7 @@ name: Generate code and build
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   build:
