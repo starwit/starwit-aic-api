@@ -1,0 +1,82 @@
+name: Generate code and build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: "Generate Java and Python bindings for ki-cockpit/ai-cockpit-api"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write    
+
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Checkout ki-cockpit/ai-cockpit-api
+          uses: actions/checkout@v4
+          with:
+            repository: ki-cockpit/ai-cockpit-api
+            path: ai-cockpit-api-repo
+
+        - name: Set up JDK 21
+          uses: actions/setup-java@v4
+          with:
+            distribution: 'temurin'
+            java-version: 21
+      
+        - name: Set up Maven
+          uses: stCarolas/setup-maven@v4.5
+          with:
+            maven-version: 3.9.9
+
+        - name: Generate and build transparency lib
+          working-directory: ./java
+          run: |
+            mvn package
+
+        - name: Test 
+          run: |
+            mvn --version
+    
+
+        # - name: Generate and build transparency lib
+        #   run: |
+        #     cd ${{ github.workspace }}/api/transparency/generators/java-lib
+        #     ./generate.sh generate
+        #     cd aicockpit-transparency-jar
+        #     mvn --batch-mode deploy
+        #   env:
+        #     GITHUB_ACTOR: flonix8
+        #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        # - name: Generate and build decision lib
+        #   run: |
+        #       cd ${{ github.workspace }}/api/decision/generators/java-lib
+        #       ./generate.sh generate
+        #       cd aicockpit-decision-jar
+        #       mvn --batch-mode deploy
+        #   env:
+        #       GITHUB_ACTOR: flonix8
+        #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+        # - name: Generate client/server code
+        #   run: |
+        #     cd ${{ github.workspace }}/api/decision/generators/java-client
+        #     mvn package
+        #     cd ${{ github.workspace }}/api/decision/generators/java-client/target/generated-sources/openapi
+        #     mvn package
+        #     cd ${{ github.workspace }}/api/decision/generators/java-server
+        #     mvn package
+        #     cd ${{ github.workspace }}/api/decision/generators/java-server/target/generated-sources/openapi
+        #     mvn package    
+        #     cd ${{ github.workspace }}/api/transparency/generators/java-client
+        #     mvn package    
+        #     cd ${{ github.workspace }}/api/transparency/generators/java-client/target/generated-sources/openapi
+        #     mvn package
+        #     cd ${{ github.workspace }}/api/transparency/generators/java-server
+        #     mvn package
+        #     cd ${{ github.workspace }}/api/transparency/generators/java-server/target/generated-sources/openapi
+        #     mvn package
