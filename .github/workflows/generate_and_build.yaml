@@ -19,7 +19,7 @@ jobs:
           uses: actions/checkout@v4
           with:
             repository: ki-cockpit/ai-cockpit-api
-            path: ai-cockpit-api-repo
+            path: ai-cockpit-api
 
         - name: Set up JDK 21
           uses: actions/setup-java@v4
@@ -35,11 +35,11 @@ jobs:
         - name: Generate and build transparency lib
           working-directory: ./java
           run: |
-            mvn compile
+            ./generate.sh
 
         - name: Test 
           run: |
-            mvn --version
+            ls -lah java/aicockpit-jar/target
     
 
         # - name: Generate and build transparency lib

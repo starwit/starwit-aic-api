@@ -18,3 +18,6 @@ mkdir -p ${PACKAGING_DIR}/
 cp -r -f ${GENERATOR_TARGET}/model               ${PACKAGING_DIR}/model
 cp       ${GENERATOR_TARGET}/JSON.java           ${PACKAGING_DIR}/
 cp       ${GENERATOR_TARGET}/ApiException.java   ${PACKAGING_DIR}/
+
+echo "package code"
+mvn -f aicockpit-jar/pom.xml package
