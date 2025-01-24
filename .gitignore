@@ -1,0 +1,7 @@
+target
+src
+
+### VS Code ###
+.vscode/
+
+env.sh
