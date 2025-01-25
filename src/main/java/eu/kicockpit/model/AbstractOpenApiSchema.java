@@ -13,10 +13,8 @@
 
 package eu.kicockpit.model;
 
-import eu.kicockpit.ApiException;
-import java.util.Objects;
-import java.lang.reflect.Type;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Abstract class for oneOf,anyOf schemas defined in OpenAPI spec
