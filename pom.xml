@@ -4,7 +4,7 @@
 
     <groupId>de.starwit</groupId>
     <artifactId>aicockpit-api</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9-SNAPSHOT</version>
     <description>Data model for AI Cockpit interfaces</description>
     <packaging>jar</packaging>
     <licenses>
@@ -25,7 +25,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/starwit/starwit-aic-api.git</connection>
-        <tag>aicockpit-api-0.0.8</tag>
+        <tag>0.0.1</tag>
     </scm>
 
     <distributionManagement>
