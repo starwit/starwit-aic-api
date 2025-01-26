@@ -8,7 +8,9 @@
     <artifactId>aicockpit-api</artifactId>
     <version>0.0.9-SNAPSHOT</version>
     <description>Data model for AI Cockpit interfaces</description>
+    <url>http://starwit.de</url>
     <packaging>jar</packaging>
+
     <licenses>
         <license>
             <name>AGPLv3</name>
@@ -27,16 +29,44 @@
 
     <scm>
         <connection>scm:git:https://github.com/starwit/starwit-aic-api.git</connection>
+        <url>https://github.com/starwit/starwit-aic-api</url>
         <tag>0.0.1</tag>
     </scm>
 
-    <distributionManagement>
+    <developers>
+        <developer>
+            <id>witchpou</id>
+            <name>Anett Hübner</name>
+            <email>info@starwit.de</email>
+            <url>https://github.com/witchpou</url>
+            <organization>Starwit Technologies GmbH</organization>
+            <organizationUrl>http://starwit.de</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Berlin</timezone>
+        </developer>    
+        <developer>
+            <id>ztarbug</id>
+            <name>Markus Zarbock</name>
+            <email>info@starwit.de</email>
+            <url>https://github.com/ztarbug</url>
+            <organization>Starwit Technologies GmbH</organization>
+            <organizationUrl>http://starwit.de</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Berlin</timezone>
+        </developer>
+    </developers>
+
+    <!--     <distributionManagement>
         <repository>
             <id>ossrh</id>
             <name>Central Repository OSSRH</name>
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
-    </distributionManagement>
+    </distributionManagement> -->
 
     <dependencies>
         <dependency>
@@ -62,7 +92,6 @@
     </dependencies>
 
     <build>
-        <finalName>aicockpit-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.sonatype.central</groupId>
@@ -115,6 +144,13 @@
                         <algorithm>MD5</algorithm>
                         <algorithm>SHA-1</algorithm>
                     </algorithms>
+                    <FileSets>
+                        <FileSet>
+                            <includes>
+                                <include>*.pom</include>
+                            </includes>
+                        </FileSet>
+                    </FileSets>
                 </configuration>
             </plugin>
             <plugin>
