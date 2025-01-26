@@ -32,7 +32,7 @@
             <password>${env.MAVEN_REPO_READ}</password>
         </server>
         <server>
-            <id>central</id>
+            <id>ossrh</id>
             <username>${env.MAVEN_USERNAME}</username>
             <password>${env.MAVEN_PASSWORD}</password>
         </server>        
