@@ -1,1 +1,7 @@
 ai-cockpit-api
+target
+
+### VS Code ###
+.vscode/
+
+env.sh
