@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "starwit_aic_api"
+version = "0.0.1"
+description = ""
+authors = ["flonix8 <flstanek@googlemail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+urllib3 = ">= 1.25.3, < 3.0.0"
+python-dateutil = ">= 2.8.2"
+pydantic = ">= 2"
+typing-extensions = ">= 4.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

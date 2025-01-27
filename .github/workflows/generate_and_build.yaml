@@ -33,14 +33,28 @@ jobs:
           with:
             maven-version: 3.9.9
 
-        - name: Generate and build transparency lib
-          working-directory: ./java
+        - name: Set up Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: lts/*
+
+        - name: Set up openapi-generator-cli
+          run: |
+            npm install @openapitools/openapi-generator-cli -g
+
+        # - name: Generate and build Java lib
+        #   working-directory: ./java
+        #   run: |
+        #     ./generate.sh
+
+        - name: Generate Python lib
+          working-directory: ./python
           run: |
             ./generate.sh
 
         - name: Test 
           run: |
-            ls -lah java/aicockpit-jar/target
+            ls -lah python
     
 
         # - name: Generate and build transparency lib
