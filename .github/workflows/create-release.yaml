@@ -59,8 +59,8 @@ jobs:
       run: |
         npm install @openapitools/openapi-generator-cli -g
 
-    - name: Setup and Install Poetry
-      uses: pronovic/setup-poetry@v2.0.6
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
 
     - name: Generate Python lib
       working-directory: ./python
