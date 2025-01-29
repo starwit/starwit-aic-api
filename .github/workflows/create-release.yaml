@@ -61,7 +61,7 @@ jobs:
         if [ ! -z "${{ env.RELEASE_VERSION }}" ]
         then
           echo "new version manually set to ${{ env.RELEASE_VERSION }}"
-          mvn -B build-helper:parse-version versions:set -DnewVersion=${{ env.RELEASE_VERSION }}-SNAPSHOT versions:commit --settings .github/workflows/settings.xml --file pom.xml
+          mvn -B build-helper:parse-version versions:set -DnewVersion=${{ env.RELEASE_VERSION }}-SNAPSHOT versions:commit --settings ${{ github.workspace }}/.github/workflows/settings.xml --file pom.xml
         fi
         echo "mvn generate-sources --file pom.xml"
         mvn generate-sources --file pom.xml
