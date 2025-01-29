@@ -35,14 +35,26 @@ jobs:
     - name: Set up Maven
       uses: stCarolas/setup-maven@v5
       with:
-         maven-version: 3.9.2      
+         maven-version: 3.9.2
 
     - name: checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: '0'
 
-    - name: Maven release pepare
+    - name: Checkout ki-cockpit/ai-cockpit-api
+      uses: actions/checkout@v4
+      with:
+        repository: ki-cockpit/ai-cockpit-api
+        path: ai-cockpit-api
+    
+    - name: Generate and build Java lib
+      working-directory: ./java
+      run: |
+        ./generate.sh
+
+    - name: Maven release prepare
+      working-directory: ./java/aicockpit-jar
       run: | 
         git config --global user.email "code@starwit.de"
         git config --global user.name "Starwit"
@@ -85,6 +97,7 @@ jobs:
         git checkout ${{ env.TAG }}
 
     - name: Build with Maven
+      working-directory: ./java/aicockpit-jar
       run: mvn clean -B package --file pom.xml
       env:
          CI: false
@@ -94,6 +107,7 @@ jobs:
          MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
 
     - name: Publish package
+      working-directory: ./java/aicockpit-jar
       run: mvn deploy
       env:
         MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
