@@ -8,7 +8,7 @@ rm -r ${PACKAGING_DIR}/starwit_aic_api/
 
 openapi-generator-cli generate -g python \
     -o ${GENERATOR_TARGET} \
-    -i ../ai-cockpit-api/api/decision/ai-cockpit-decision.yaml \
+    -i ../ai-cockpit-api/aicockpit-api/decision-api.yaml \
     --additional-properties=generateSourceCodeOnly=true,packageName=starwit_aic_api
 
 mkdir -p ${PACKAGING_DIR}/starwit_aic_api/
