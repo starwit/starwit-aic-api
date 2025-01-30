@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "starwit_aic_api"
-version = "0.0.3"
+version = "0.0.4"
 description = ""
 authors = ["flonix8 <flstanek@googlemail.com>"]
 readme = "README.md"
