@@ -83,21 +83,6 @@ jobs:
         echo "new version manually set to ${{ env.RELEASE_VERSION }}"
         mvn -B build-helper:parse-version versions:set -DnewVersion=${{ env.RELEASE_VERSION }}-SNAPSHOT versions:commit --settings ${{ github.workspace }}/.github/workflows/settings.xml
 
-    - name: Commit and push tag
-      run: |
-        git config --global user.email "code@starwit.de"
-        git config --global user.name "Starwit"
-        git add .
-        modifications=$(git status | grep "modified" || true)
-        if [ ! -z "$modifications" ]
-        then
-          echo "modifications found: $modifications"
-          git commit -m "Bumping version to ${{ env.RELEASE_VERSION }}"
-          git push
-        fi
-      env:
-         CI: false
-
     - name: Get tag name
       run: |
         echo "TAG=${{ env.RELEASE_VERSION }}" >> $GITHUB_ENV
@@ -124,4 +109,17 @@ jobs:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
 
-
+    - name: Commit and push tag
+      run: |
+        git config --global user.email "code@starwit.de"
+        git config --global user.name "Starwit"
+        git add .
+        modifications=$(git status | grep "modified" || true)
+        if [ ! -z "$modifications" ]
+        then
+          echo "modifications found: $modifications"
+          git commit -m "Bumping version to ${{ env.RELEASE_VERSION }}"
+          git push
+        fi
+      env:
+         CI: false
