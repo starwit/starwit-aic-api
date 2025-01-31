@@ -92,6 +92,21 @@ jobs:
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Commit and push tag
+      run: |
+        git config --global user.email "code@starwit.de"
+        git config --global user.name "Starwit"
+        git add .
+        modifications=$(git status | grep "modified" || true)
+        if [ ! -z "$modifications" ]
+        then
+          echo "modifications found: $modifications"
+          git commit -m "Bumping version to ${{ env.RELEASE_VERSION }}"
+          git push
+        fi
+      env:
+         CI: false
+    
     - name: Build Maven project
       working-directory: ./java/aicockpit-jar
       run: mvn clean -B package
@@ -108,18 +123,3 @@ jobs:
         MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}        
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
-
-    - name: Commit and push tag
-      run: |
-        git config --global user.email "code@starwit.de"
-        git config --global user.name "Starwit"
-        git add .
-        modifications=$(git status | grep "modified" || true)
-        if [ ! -z "$modifications" ]
-        then
-          echo "modifications found: $modifications"
-          git commit -m "Bumping version to ${{ env.RELEASE_VERSION }}"
-          git push
-        fi
-      env:
-         CI: false
