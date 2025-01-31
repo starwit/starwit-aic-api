@@ -81,7 +81,7 @@ jobs:
       working-directory: ./java/aicockpit-jar
       run: | 
         echo "new version manually set to ${{ env.RELEASE_VERSION }}"
-        mvn -B build-helper:parse-version versions:set -DnewVersion=${{ env.RELEASE_VERSION }}-SNAPSHOT versions:commit --settings ${{ github.workspace }}/.github/workflows/settings.xml
+        mvn -B build-helper:parse-version versions:set -DnewVersion=${{ env.RELEASE_VERSION }} versions:commit --settings ${{ github.workspace }}/.github/workflows/settings.xml
 
     - name: Get tag name
       run: |
