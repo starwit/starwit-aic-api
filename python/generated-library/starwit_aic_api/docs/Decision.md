@@ -1,5 +1,6 @@
 # Decision
 
+An actual decision that a system made
 
 ## Properties
 

@@ -1,5 +1,6 @@
 # DecisionType
 
+A type of decision that a system can derive
 
 ## Properties
 

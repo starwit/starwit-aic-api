@@ -52,9 +52,9 @@ import java.util.Set;
 import de.starwit.aic.JSON;
 
 /**
- * ActionType
+ * A type of action that a system can execute
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T09:16:27.200190972Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T19:41:30.613174479Z[Etc/UTC]")
 public class ActionType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

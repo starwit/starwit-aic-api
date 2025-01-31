@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.starwit.aic.model.ModelType;
+import de.starwit.aic.model.AIModelType;
 import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
@@ -50,10 +50,10 @@ import java.util.Set;
 import de.starwit.aic.JSON;
 
 /**
- * Model
+ * AIModel
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T09:16:27.200190972Z[Etc/UTC]")
-public class Model {
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T19:41:30.613174479Z[Etc/UTC]")
+public class AIModel {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -68,7 +68,7 @@ public class Model {
 
   public static final String SERIALIZED_NAME_MODEL_TYPE = "modelType";
   @SerializedName(SERIALIZED_NAME_MODEL_TYPE)
-  private ModelType modelType;
+  private AIModelType modelType;
 
   public static final String SERIALIZED_NAME_MODEL_LINK = "modelLink";
   @SerializedName(SERIALIZED_NAME_MODEL_LINK)
@@ -82,10 +82,10 @@ public class Model {
   @SerializedName(SERIALIZED_NAME_LINK_TO_PUBLIC_TRAINING_DATA)
   private URI linkToPublicTrainingData;
 
-  public Model() {
+  public AIModel() {
   }
 
-  public Model name(String name) {
+  public AIModel name(String name) {
     this.name = name;
     return this;
   }
@@ -104,7 +104,7 @@ public class Model {
   }
 
 
-  public Model version(String version) {
+  public AIModel version(String version) {
     this.version = version;
     return this;
   }
@@ -123,7 +123,7 @@ public class Model {
   }
 
 
-  public Model lastDeployment(OffsetDateTime lastDeployment) {
+  public AIModel lastDeployment(OffsetDateTime lastDeployment) {
     this.lastDeployment = lastDeployment;
     return this;
   }
@@ -142,7 +142,7 @@ public class Model {
   }
 
 
-  public Model modelType(ModelType modelType) {
+  public AIModel modelType(AIModelType modelType) {
     this.modelType = modelType;
     return this;
   }
@@ -152,16 +152,16 @@ public class Model {
    * @return modelType
   **/
   @jakarta.annotation.Nullable
-  public ModelType getModelType() {
+  public AIModelType getModelType() {
     return modelType;
   }
 
-  public void setModelType(ModelType modelType) {
+  public void setModelType(AIModelType modelType) {
     this.modelType = modelType;
   }
 
 
-  public Model modelLink(URI modelLink) {
+  public AIModel modelLink(URI modelLink) {
     this.modelLink = modelLink;
     return this;
   }
@@ -180,7 +180,7 @@ public class Model {
   }
 
 
-  public Model publicTrainingData(Boolean publicTrainingData) {
+  public AIModel publicTrainingData(Boolean publicTrainingData) {
     this.publicTrainingData = publicTrainingData;
     return this;
   }
@@ -199,7 +199,7 @@ public class Model {
   }
 
 
-  public Model linkToPublicTrainingData(URI linkToPublicTrainingData) {
+  public AIModel linkToPublicTrainingData(URI linkToPublicTrainingData) {
     this.linkToPublicTrainingData = linkToPublicTrainingData;
     return this;
   }
@@ -227,14 +227,14 @@ public class Model {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Model model = (Model) o;
-    return Objects.equals(this.name, model.name) &&
-        Objects.equals(this.version, model.version) &&
-        Objects.equals(this.lastDeployment, model.lastDeployment) &&
-        Objects.equals(this.modelType, model.modelType) &&
-        Objects.equals(this.modelLink, model.modelLink) &&
-        Objects.equals(this.publicTrainingData, model.publicTrainingData) &&
-        Objects.equals(this.linkToPublicTrainingData, model.linkToPublicTrainingData);
+    AIModel aiModel = (AIModel) o;
+    return Objects.equals(this.name, aiModel.name) &&
+        Objects.equals(this.version, aiModel.version) &&
+        Objects.equals(this.lastDeployment, aiModel.lastDeployment) &&
+        Objects.equals(this.modelType, aiModel.modelType) &&
+        Objects.equals(this.modelLink, aiModel.modelLink) &&
+        Objects.equals(this.publicTrainingData, aiModel.publicTrainingData) &&
+        Objects.equals(this.linkToPublicTrainingData, aiModel.linkToPublicTrainingData);
   }
 
   @Override
@@ -245,7 +245,7 @@ public class Model {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Model {\n");
+    sb.append("class AIModel {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    lastDeployment: ").append(toIndentedString(lastDeployment)).append("\n");
@@ -291,20 +291,20 @@ public class Model {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Model
+  * @throws IOException if the JSON Element is invalid with respect to AIModel
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Model.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Model is not found in the empty JSON string", Model.openapiRequiredFields.toString()));
+        if (!AIModel.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AIModel is not found in the empty JSON string", AIModel.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Model.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Model` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!AIModel.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AIModel` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -316,7 +316,7 @@ public class Model {
       }
       // validate the optional field `modelType`
       if (jsonObj.get("modelType") != null && !jsonObj.get("modelType").isJsonNull()) {
-        ModelType.validateJsonElement(jsonObj.get("modelType"));
+        AIModelType.validateJsonElement(jsonObj.get("modelType"));
       }
       if ((jsonObj.get("modelLink") != null && !jsonObj.get("modelLink").isJsonNull()) && !jsonObj.get("modelLink").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `modelLink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("modelLink").toString()));
@@ -330,22 +330,22 @@ public class Model {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Model.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Model' and its subtypes
+       if (!AIModel.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AIModel' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Model> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Model.class));
+       final TypeAdapter<AIModel> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AIModel.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Model>() {
+       return (TypeAdapter<T>) new TypeAdapter<AIModel>() {
            @Override
-           public void write(JsonWriter out, Model value) throws IOException {
+           public void write(JsonWriter out, AIModel value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Model read(JsonReader in) throws IOException {
+           public AIModel read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -356,18 +356,18 @@ public class Model {
   }
 
  /**
-  * Create an instance of Model given an JSON string
+  * Create an instance of AIModel given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of Model
-  * @throws IOException if the JSON string is invalid with respect to Model
+  * @return An instance of AIModel
+  * @throws IOException if the JSON string is invalid with respect to AIModel
   */
-  public static Model fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Model.class);
+  public static AIModel fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AIModel.class);
   }
 
  /**
-  * Convert an instance of Model to an JSON string
+  * Convert an instance of AIModel to an JSON string
   *
   * @return JSON string
   */

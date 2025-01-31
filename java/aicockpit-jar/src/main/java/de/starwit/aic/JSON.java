@@ -93,12 +93,12 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gsonBuilder.registerTypeAdapterFactory(new de.starwit.aic.model.AIModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.starwit.aic.model.Action.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.starwit.aic.model.ActionType.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.starwit.aic.model.Decision.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.starwit.aic.model.DecisionType.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.starwit.aic.model.Info.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.starwit.aic.model.Model.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.starwit.aic.model.Module.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.starwit.aic.model.ModuleSBOMLocationValue.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();

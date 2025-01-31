@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from starwit_aic_api.models.model import Model
+from starwit_aic_api.models.ai_model import AIModel
 from starwit_aic_api.models.module_sbom_location_value import ModuleSBOMLocationValue
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,12 +32,13 @@ class Module(BaseModel):
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     use_ai: Optional[StrictBool] = Field(default=None, alias="useAI")
-    model: Optional[Model] = None
+    model: Optional[AIModel] = None
     action_types: Optional[List[ActionType]] = Field(default=None, alias="actionTypes")
     decision_types: Optional[List[DecisionType]] = Field(default=None, alias="decisionTypes")
     s_bom_location: Optional[Dict[str, ModuleSBOMLocationValue]] = Field(default=None, alias="sBOMLocation")
     successors: Optional[List[Module]] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "useAI", "model", "actionTypes", "decisionTypes", "sBOMLocation", "successors"]
+    submodules: Optional[List[Module]] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "useAI", "model", "actionTypes", "decisionTypes", "sBOMLocation", "successors", "submodules"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -109,6 +110,13 @@ class Module(BaseModel):
                 if _item_successors:
                     _items.append(_item_successors.to_dict())
             _dict['successors'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in submodules (list)
+        _items = []
+        if self.submodules:
+            for _item_submodules in self.submodules:
+                if _item_submodules:
+                    _items.append(_item_submodules.to_dict())
+            _dict['submodules'] = _items
         return _dict
 
     @classmethod
@@ -125,7 +133,7 @@ class Module(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "useAI": obj.get("useAI"),
-            "model": Model.from_dict(obj["model"]) if obj.get("model") is not None else None,
+            "model": AIModel.from_dict(obj["model"]) if obj.get("model") is not None else None,
             "actionTypes": [ActionType.from_dict(_item) for _item in obj["actionTypes"]] if obj.get("actionTypes") is not None else None,
             "decisionTypes": [DecisionType.from_dict(_item) for _item in obj["decisionTypes"]] if obj.get("decisionTypes") is not None else None,
             "sBOMLocation": dict(
@@ -134,7 +142,8 @@ class Module(BaseModel):
             )
             if obj.get("sBOMLocation") is not None
             else None,
-            "successors": [Module.from_dict(_item) for _item in obj["successors"]] if obj.get("successors") is not None else None
+            "successors": [Module.from_dict(_item) for _item in obj["successors"]] if obj.get("successors") is not None else None,
+            "submodules": [Module.from_dict(_item) for _item in obj["submodules"]] if obj.get("submodules") is not None else None
         })
         return _obj
 

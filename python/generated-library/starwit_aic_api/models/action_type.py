@@ -24,7 +24,7 @@ from typing_extensions import Self
 
 class ActionType(BaseModel):
     """
-    ActionType
+    A type of action that a system can execute
     """ # noqa: E501
     id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None

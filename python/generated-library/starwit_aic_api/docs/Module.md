@@ -9,11 +9,12 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **use_ai** | **bool** |  | [optional] 
-**model** | [**Model**](Model.md) |  | [optional] 
+**model** | [**AIModel**](AIModel.md) |  | [optional] 
 **action_types** | [**List[ActionType]**](ActionType.md) |  | [optional] 
 **decision_types** | [**List[DecisionType]**](DecisionType.md) |  | [optional] 
 **s_bom_location** | [**Dict[str, ModuleSBOMLocationValue]**](ModuleSBOMLocationValue.md) |  | [optional] 
 **successors** | [**List[Module]**](Module.md) |  | [optional] 
+**submodules** | [**List[Module]**](Module.md) |  | [optional] 
 
 ## Example
 

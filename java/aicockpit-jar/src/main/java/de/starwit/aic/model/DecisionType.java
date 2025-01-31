@@ -52,9 +52,9 @@ import java.util.Set;
 import de.starwit.aic.JSON;
 
 /**
- * DecisionType
+ * A type of decision that a system can derive
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T09:16:27.200190972Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T19:41:30.613174479Z[Etc/UTC]")
 public class DecisionType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

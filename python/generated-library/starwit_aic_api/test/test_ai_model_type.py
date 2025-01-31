@@ -14,10 +14,10 @@
 
 import unittest
 
-from starwit_aic_api.models.model_type import ModelType
+from starwit_aic_api.models.ai_model_type import AIModelType
 
-class TestModelType(unittest.TestCase):
-    """ModelType unit test stubs"""
+class TestAIModelType(unittest.TestCase):
+    """AIModelType unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,9 +25,9 @@ class TestModelType(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testModelType(self):
-        """Test ModelType"""
-        # inst = ModelType()
+    def testAIModelType(self):
+        """Test AIModelType"""
+        # inst = AIModelType()
 
 if __name__ == '__main__':
     unittest.main()

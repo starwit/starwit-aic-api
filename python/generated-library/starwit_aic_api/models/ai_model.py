@@ -20,18 +20,18 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from starwit_aic_api.models.model_type import ModelType
+from starwit_aic_api.models.ai_model_type import AIModelType
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Model(BaseModel):
+class AIModel(BaseModel):
     """
-    Model
+    AIModel
     """ # noqa: E501
     name: Optional[StrictStr] = None
     version: Optional[StrictStr] = None
     last_deployment: Optional[datetime] = Field(default=None, alias="lastDeployment")
-    model_type: Optional[ModelType] = Field(default=None, alias="modelType")
+    model_type: Optional[AIModelType] = Field(default=None, alias="modelType")
     model_link: Optional[StrictStr] = Field(default=None, description="Link to model documentation", alias="modelLink")
     public_training_data: Optional[StrictBool] = Field(default=None, description="Is model based on public training data?", alias="publicTrainingData")
     link_to_public_training_data: Optional[StrictStr] = Field(default=None, description="Link to public training data / documentation.", alias="linkToPublicTrainingData")
@@ -55,7 +55,7 @@ class Model(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Model from a JSON string"""
+        """Create an instance of AIModel from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,7 +80,7 @@ class Model(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Model from a dict"""
+        """Create an instance of AIModel from a dict"""
         if obj is None:
             return None
 

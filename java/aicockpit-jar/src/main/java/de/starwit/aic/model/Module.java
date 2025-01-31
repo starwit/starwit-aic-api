@@ -19,9 +19,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import de.starwit.aic.model.AIModel;
 import de.starwit.aic.model.ActionType;
 import de.starwit.aic.model.DecisionType;
-import de.starwit.aic.model.Model;
 import de.starwit.aic.model.ModuleSBOMLocationValue;
 import java.io.IOException;
 import java.util.Arrays;
@@ -57,7 +57,7 @@ import de.starwit.aic.JSON;
 /**
  * Module
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T09:16:27.200190972Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T19:41:30.613174479Z[Etc/UTC]")
 public class Module {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -77,7 +77,7 @@ public class Module {
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
-  private Model model;
+  private AIModel model;
 
   public static final String SERIALIZED_NAME_ACTION_TYPES = "actionTypes";
   @SerializedName(SERIALIZED_NAME_ACTION_TYPES)
@@ -94,6 +94,10 @@ public class Module {
   public static final String SERIALIZED_NAME_SUCCESSORS = "successors";
   @SerializedName(SERIALIZED_NAME_SUCCESSORS)
   private Set<Module> successors;
+
+  public static final String SERIALIZED_NAME_SUBMODULES = "submodules";
+  @SerializedName(SERIALIZED_NAME_SUBMODULES)
+  private Set<Module> submodules;
 
   public Module() {
   }
@@ -174,7 +178,7 @@ public class Module {
   }
 
 
-  public Module model(Model model) {
+  public Module model(AIModel model) {
     this.model = model;
     return this;
   }
@@ -184,11 +188,11 @@ public class Module {
    * @return model
   **/
   @jakarta.annotation.Nullable
-  public Model getModel() {
+  public AIModel getModel() {
     return model;
   }
 
-  public void setModel(Model model) {
+  public void setModel(AIModel model) {
     this.model = model;
   }
 
@@ -301,6 +305,33 @@ public class Module {
   }
 
 
+  public Module submodules(Set<Module> submodules) {
+    this.submodules = submodules;
+    return this;
+  }
+
+  public Module addSubmodulesItem(Module submodulesItem) {
+    if (this.submodules == null) {
+      this.submodules = new LinkedHashSet<>();
+    }
+    this.submodules.add(submodulesItem);
+    return this;
+  }
+
+   /**
+   * Get submodules
+   * @return submodules
+  **/
+  @jakarta.annotation.Nullable
+  public Set<Module> getSubmodules() {
+    return submodules;
+  }
+
+  public void setSubmodules(Set<Module> submodules) {
+    this.submodules = submodules;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -319,12 +350,13 @@ public class Module {
         Objects.equals(this.actionTypes, module.actionTypes) &&
         Objects.equals(this.decisionTypes, module.decisionTypes) &&
         Objects.equals(this.sBOMLocation, module.sBOMLocation) &&
-        Objects.equals(this.successors, module.successors);
+        Objects.equals(this.successors, module.successors) &&
+        Objects.equals(this.submodules, module.submodules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, useAI, model, actionTypes, decisionTypes, sBOMLocation, successors);
+    return Objects.hash(id, name, description, useAI, model, actionTypes, decisionTypes, sBOMLocation, successors, submodules);
   }
 
   @Override
@@ -340,6 +372,7 @@ public class Module {
     sb.append("    decisionTypes: ").append(toIndentedString(decisionTypes)).append("\n");
     sb.append("    sBOMLocation: ").append(toIndentedString(sBOMLocation)).append("\n");
     sb.append("    successors: ").append(toIndentedString(successors)).append("\n");
+    sb.append("    submodules: ").append(toIndentedString(submodules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -371,6 +404,7 @@ public class Module {
     openapiFields.add("decisionTypes");
     openapiFields.add("sBOMLocation");
     openapiFields.add("successors");
+    openapiFields.add("submodules");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -405,7 +439,7 @@ public class Module {
       }
       // validate the optional field `model`
       if (jsonObj.get("model") != null && !jsonObj.get("model").isJsonNull()) {
-        Model.validateJsonElement(jsonObj.get("model"));
+        AIModel.validateJsonElement(jsonObj.get("model"));
       }
       if (jsonObj.get("actionTypes") != null && !jsonObj.get("actionTypes").isJsonNull()) {
         JsonArray jsonArrayactionTypes = jsonObj.getAsJsonArray("actionTypes");
@@ -446,6 +480,20 @@ public class Module {
           // validate the optional field `successors` (array)
           for (int i = 0; i < jsonArraysuccessors.size(); i++) {
             Module.validateJsonElement(jsonArraysuccessors.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("submodules") != null && !jsonObj.get("submodules").isJsonNull()) {
+        JsonArray jsonArraysubmodules = jsonObj.getAsJsonArray("submodules");
+        if (jsonArraysubmodules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("submodules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `submodules` to be an array in the JSON string but got `%s`", jsonObj.get("submodules").toString()));
+          }
+
+          // validate the optional field `submodules` (array)
+          for (int i = 0; i < jsonArraysubmodules.size(); i++) {
+            Module.validateJsonElement(jsonArraysubmodules.get(i));
           };
         }
       }

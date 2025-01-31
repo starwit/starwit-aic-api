@@ -43,7 +43,7 @@ class TestDecisionType(unittest.TestCase):
                     name = '', 
                     description = '', 
                     use_ai = True, 
-                    model = starwit_aic_api.models.model.Model(
+                    model = starwit_aic_api.models.ai_model.AIModel(
                         name = '', 
                         version = '', 
                         last_deployment = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
@@ -116,7 +116,13 @@ class TestDecisionType(unittest.TestCase):
                             id = 56, 
                             name = '', 
                             description = '', 
-                            use_ai = True, )
+                            use_ai = True, 
+                            submodules = [
+                                
+                                ], )
+                        ], 
+                    submodules = [
+                        
                         ], ),
                 decisions = [
                     starwit_aic_api.models.decision.Decision(
@@ -133,7 +139,7 @@ class TestDecisionType(unittest.TestCase):
                             name = '', 
                             description = '', 
                             use_ai = True, 
-                            model = starwit_aic_api.models.model.Model(
+                            model = starwit_aic_api.models.ai_model.AIModel(
                                 name = '', 
                                 version = '', 
                                 last_deployment = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
@@ -195,7 +201,13 @@ class TestDecisionType(unittest.TestCase):
                                     id = 56, 
                                     name = '', 
                                     description = '', 
-                                    use_ai = True, )
+                                    use_ai = True, 
+                                    submodules = [
+                                        
+                                        ], )
+                                ], 
+                            submodules = [
+                                
                                 ], ), 
                         decision_type = , 
                         actions = [
@@ -219,7 +231,7 @@ class TestDecisionType(unittest.TestCase):
                             name = '', 
                             description = '', 
                             use_ai = True, 
-                            model = starwit_aic_api.models.model.Model(
+                            model = starwit_aic_api.models.ai_model.AIModel(
                                 name = '', 
                                 version = '', 
                                 last_deployment = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
@@ -280,7 +292,13 @@ class TestDecisionType(unittest.TestCase):
                                     id = 56, 
                                     name = '', 
                                     description = '', 
-                                    use_ai = True, )
+                                    use_ai = True, 
+                                    submodules = [
+                                        
+                                        ], )
+                                ], 
+                            submodules = [
+                                
                                 ], ), 
                         actions = [
                             starwit_aic_api.models.action.Action(

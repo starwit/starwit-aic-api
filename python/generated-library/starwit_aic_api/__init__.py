@@ -31,12 +31,12 @@ from starwit_aic_api.exceptions import ApiAttributeError
 from starwit_aic_api.exceptions import ApiException
 
 # import models into sdk package
+from starwit_aic_api.models.ai_model import AIModel
+from starwit_aic_api.models.ai_model_type import AIModelType
 from starwit_aic_api.models.action import Action
 from starwit_aic_api.models.action_type import ActionType
 from starwit_aic_api.models.decision import Decision
 from starwit_aic_api.models.decision_type import DecisionType
 from starwit_aic_api.models.info import Info
-from starwit_aic_api.models.model import Model
-from starwit_aic_api.models.model_type import ModelType
 from starwit_aic_api.models.module import Module
 from starwit_aic_api.models.module_sbom_location_value import ModuleSBOMLocationValue

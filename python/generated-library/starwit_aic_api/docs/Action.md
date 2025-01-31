@@ -1,5 +1,6 @@
 # Action
 
+An actual action that a system executes
 
 ## Properties
 

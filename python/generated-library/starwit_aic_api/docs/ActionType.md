@@ -1,5 +1,6 @@
 # ActionType
 
+A type of action that a system can execute
 
 ## Properties
 

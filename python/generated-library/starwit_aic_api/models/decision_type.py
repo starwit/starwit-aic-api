@@ -24,7 +24,7 @@ from typing_extensions import Self
 
 class DecisionType(BaseModel):
     """
-    DecisionType
+    A type of decision that a system can derive
     """ # noqa: E501
     id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None

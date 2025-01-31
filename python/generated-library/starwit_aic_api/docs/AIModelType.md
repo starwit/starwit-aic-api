@@ -1,4 +1,4 @@
-# ModelType
+# AIModelType
 
 
 ## Enum

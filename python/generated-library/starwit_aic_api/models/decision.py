@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class Decision(BaseModel):
     """
-    Decision
+    An actual decision that a system made
     """ # noqa: E501
     id: Optional[StrictInt] = None
     acquisition_time: Optional[datetime] = Field(default=None, description="Timestamp when the decision was made", alias="acquisitionTime")

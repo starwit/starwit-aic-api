@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class Action(BaseModel):
     """
-    Action
+    An actual action that a system executes
     """ # noqa: E501
     id: Optional[StrictInt] = None
     creation_time: Optional[datetime] = Field(default=None, alias="creationTime")
