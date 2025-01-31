@@ -1,19 +1,17 @@
-name: Create release
-
-# Creating maven and github release
+name: Create release and publish
 
 on:
   workflow_dispatch:
     inputs:
-      release-version: # id of input
-        description: "override default release version e.g. with 0.1.0-1"
-        required: false
+      RELEASE_VERSION:
+        description: "Set release version"
+        required: true
 
 permissions:
   contents: write
 
 env:
-  RELEASE_VERSION: ${{ github.event.inputs.release-version }}
+  RELEASE_VERSION: ${{ github.event.inputs.RELEASE_VERSION }}
 
 jobs:
   build:
@@ -35,66 +33,91 @@ jobs:
     - name: Set up Maven
       uses: stCarolas/setup-maven@v5
       with:
-         maven-version: 3.9.2      
+         maven-version: 3.9.2
+
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12' 
 
     - name: checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: '0'
 
-    - name: Maven release pepare
+    - name: Checkout ki-cockpit/ai-cockpit-api
+      uses: actions/checkout@v4
+      with:
+        repository: ki-cockpit/ai-cockpit-api
+        path: ai-cockpit-api
+
+    - name: Set up openapi-generator-cli
+      run: |
+        npm install @openapitools/openapi-generator-cli -g
+
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+
+    - name: Generate Python lib
+      working-directory: ./python
+      run: |
+        ./generate.sh
+    
+    - name: Set Python lib version
+      working-directory: ./python/generated-library
+      run: |
+        poetry version ${{ env.RELEASE_VERSION }}
+    
+    - name: Generate Java lib
+      working-directory: ./java
+      run: |
+        ./generate.sh
+
+    - name: Set Java lib version and build
+      working-directory: ./java/aicockpit-jar
       run: | 
-        git config --global user.email "code@starwit.de"
-        git config --global user.name "Starwit"
-        if [ ! -z "${{ env.RELEASE_VERSION }}" ]
-        then
-          echo "new version manually set to ${{ env.RELEASE_VERSION }}"
-          mvn -B build-helper:parse-version versions:set -DnewVersion=${{ env.RELEASE_VERSION }}-SNAPSHOT versions:commit --settings .github/workflows/settings.xml --file pom.xml
-        fi
-        echo "mvn generate-sources --file pom.xml"
-        mvn generate-sources --file pom.xml
-        echo "git add ."
-        git add .
-        modifications=$(git status | grep "modified" || true)
-        if [ ! -z "$modifications" ]
-        then
-          echo "modifications found: $modifications"
-          git commit -m "modified changelog"
-          git push
-        fi
-        mvn -B release:clean release:prepare -Darguments="-DskipTests" --file pom.xml
-        mvn -B release:clean --file pom.xml
-      env:
-         CI: false
-         PRIVATE_REPO_USERNAME: ${{ vars.PRIVATE_REPO_USERNAME }}
-         MAVEN_REPO_READ: ${{ secrets.MAVEN_REPO_READ }}
-         MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-         MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+        echo "new version manually set to ${{ env.RELEASE_VERSION }}"
+        mvn -B build-helper:parse-version versions:set -DnewVersion=${{ env.RELEASE_VERSION }}-SNAPSHOT versions:commit --settings ${{ github.workspace }}/.github/workflows/settings.xml
 
     - name: Get tag name
       run: |
-        echo "TAG=$( git describe --abbrev=0 )" >> $GITHUB_ENV
+        echo "TAG=${{ env.RELEASE_VERSION }}" >> $GITHUB_ENV
 
     - name: Create github release
       run: gh release create ${{ env.TAG }} -F CHANGELOG.md
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Checkout tag
+    - name: Commit and push tag
       run: |
-        git checkout ${{ env.TAG }}
-
-    - name: Build with Maven
-      run: mvn clean -B package --file pom.xml
+        git config --global user.email "code@starwit.de"
+        git config --global user.name "Starwit"
+        git add .
+        modifications=$(git status | grep "modified" || true)
+        if [ ! -z "$modifications" ]
+        then
+          echo "modifications found: $modifications"
+          git commit -m "Bumping version to ${{ env.RELEASE_VERSION }}"
+          git push
+        fi
       env:
          CI: false
-         PRIVATE_REPO_USERNAME: ${{ vars.PRIVATE_REPO_USERNAME }}
-         MAVEN_REPO_READ: ${{ secrets.MAVEN_REPO_READ }}
+    
+    - name: Build Maven project
+      working-directory: ./java/aicockpit-jar
+      run: mvn clean -B package
+      env:
+         CI: false
          MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
          MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
 
-    - name: Publish package
-      run: mvn deploy
+    - name: Publish Maven package to Maven Central
+      working-directory: ./java/aicockpit-jar
+      run: mvn deploy --settings ${{ github.workspace }}/.github/workflows/settings.xml
       env:
         MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
         MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}        
