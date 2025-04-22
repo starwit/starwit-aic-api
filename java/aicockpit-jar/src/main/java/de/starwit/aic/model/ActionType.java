@@ -19,13 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.starwit.aic.model.Action;
-import de.starwit.aic.model.DecisionType;
-import de.starwit.aic.model.Module;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,7 +49,7 @@ import de.starwit.aic.JSON;
 /**
  * A type of action that a system can execute
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T19:41:30.613174479Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T10:02:22.174100061+02:00[Europe/Berlin]")
 public class ActionType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -129,18 +124,6 @@ public class ActionType {
   public static final String SERIALIZED_NAME_EXECUTION_POLICY = "executionPolicy";
   @SerializedName(SERIALIZED_NAME_EXECUTION_POLICY)
   private ExecutionPolicyEnum executionPolicy;
-
-  public static final String SERIALIZED_NAME_MODULE = "module";
-  @SerializedName(SERIALIZED_NAME_MODULE)
-  private Module module;
-
-  public static final String SERIALIZED_NAME_ACTIONS = "actions";
-  @SerializedName(SERIALIZED_NAME_ACTIONS)
-  private Set<Action> actions;
-
-  public static final String SERIALIZED_NAME_DECISION_TYPES = "decisionTypes";
-  @SerializedName(SERIALIZED_NAME_DECISION_TYPES)
-  private Set<DecisionType> decisionTypes;
 
   public ActionType() {
   }
@@ -240,79 +223,6 @@ public class ActionType {
   }
 
 
-  public ActionType module(Module module) {
-    this.module = module;
-    return this;
-  }
-
-   /**
-   * Get module
-   * @return module
-  **/
-  @jakarta.annotation.Nullable
-  public Module getModule() {
-    return module;
-  }
-
-  public void setModule(Module module) {
-    this.module = module;
-  }
-
-
-  public ActionType actions(Set<Action> actions) {
-    this.actions = actions;
-    return this;
-  }
-
-  public ActionType addActionsItem(Action actionsItem) {
-    if (this.actions == null) {
-      this.actions = new LinkedHashSet<>();
-    }
-    this.actions.add(actionsItem);
-    return this;
-  }
-
-   /**
-   * Get actions
-   * @return actions
-  **/
-  @jakarta.annotation.Nullable
-  public Set<Action> getActions() {
-    return actions;
-  }
-
-  public void setActions(Set<Action> actions) {
-    this.actions = actions;
-  }
-
-
-  public ActionType decisionTypes(Set<DecisionType> decisionTypes) {
-    this.decisionTypes = decisionTypes;
-    return this;
-  }
-
-  public ActionType addDecisionTypesItem(DecisionType decisionTypesItem) {
-    if (this.decisionTypes == null) {
-      this.decisionTypes = new LinkedHashSet<>();
-    }
-    this.decisionTypes.add(decisionTypesItem);
-    return this;
-  }
-
-   /**
-   * Get decisionTypes
-   * @return decisionTypes
-  **/
-  @jakarta.annotation.Nullable
-  public Set<DecisionType> getDecisionTypes() {
-    return decisionTypes;
-  }
-
-  public void setDecisionTypes(Set<DecisionType> decisionTypes) {
-    this.decisionTypes = decisionTypes;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -327,15 +237,12 @@ public class ActionType {
         Objects.equals(this.name, actionType.name) &&
         Objects.equals(this.description, actionType.description) &&
         Objects.equals(this.endpoint, actionType.endpoint) &&
-        Objects.equals(this.executionPolicy, actionType.executionPolicy) &&
-        Objects.equals(this.module, actionType.module) &&
-        Objects.equals(this.actions, actionType.actions) &&
-        Objects.equals(this.decisionTypes, actionType.decisionTypes);
+        Objects.equals(this.executionPolicy, actionType.executionPolicy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, endpoint, executionPolicy, module, actions, decisionTypes);
+    return Objects.hash(id, name, description, endpoint, executionPolicy);
   }
 
   @Override
@@ -347,9 +254,6 @@ public class ActionType {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    endpoint: ").append(toIndentedString(endpoint)).append("\n");
     sb.append("    executionPolicy: ").append(toIndentedString(executionPolicy)).append("\n");
-    sb.append("    module: ").append(toIndentedString(module)).append("\n");
-    sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
-    sb.append("    decisionTypes: ").append(toIndentedString(decisionTypes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -377,9 +281,6 @@ public class ActionType {
     openapiFields.add("description");
     openapiFields.add("endpoint");
     openapiFields.add("executionPolicy");
-    openapiFields.add("module");
-    openapiFields.add("actions");
-    openapiFields.add("decisionTypes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -421,38 +322,6 @@ public class ActionType {
       // validate the optional field `executionPolicy`
       if (jsonObj.get("executionPolicy") != null && !jsonObj.get("executionPolicy").isJsonNull()) {
         ExecutionPolicyEnum.validateJsonElement(jsonObj.get("executionPolicy"));
-      }
-      // validate the optional field `module`
-      if (jsonObj.get("module") != null && !jsonObj.get("module").isJsonNull()) {
-        Module.validateJsonElement(jsonObj.get("module"));
-      }
-      if (jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonNull()) {
-        JsonArray jsonArrayactions = jsonObj.getAsJsonArray("actions");
-        if (jsonArrayactions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("actions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `actions` to be an array in the JSON string but got `%s`", jsonObj.get("actions").toString()));
-          }
-
-          // validate the optional field `actions` (array)
-          for (int i = 0; i < jsonArrayactions.size(); i++) {
-            Action.validateJsonElement(jsonArrayactions.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("decisionTypes") != null && !jsonObj.get("decisionTypes").isJsonNull()) {
-        JsonArray jsonArraydecisionTypes = jsonObj.getAsJsonArray("decisionTypes");
-        if (jsonArraydecisionTypes != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("decisionTypes").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `decisionTypes` to be an array in the JSON string but got `%s`", jsonObj.get("decisionTypes").toString()));
-          }
-
-          // validate the optional field `decisionTypes` (array)
-          for (int i = 0; i < jsonArraydecisionTypes.size(); i++) {
-            DecisionType.validateJsonElement(jsonArraydecisionTypes.get(i));
-          };
-        }
       }
   }
 

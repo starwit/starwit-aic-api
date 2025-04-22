@@ -49,7 +49,7 @@ import de.starwit.aic.JSON;
 /**
  * ModuleSBOMLocationValue
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T19:41:30.613174479Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T10:02:22.174100061+02:00[Europe/Berlin]")
 public class ModuleSBOMLocationValue {
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)

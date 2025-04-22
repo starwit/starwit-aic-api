@@ -57,15 +57,23 @@ import de.starwit.aic.JSON;
 /**
  * Module
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T19:41:30.613174479Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T10:02:22.174100061+02:00[Europe/Berlin]")
 public class Module {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private Long id;
 
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private String version;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_APPLICATION_IDENTIFIER = "applicationIdentifier";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_IDENTIFIER)
+  private String applicationIdentifier;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -95,10 +103,6 @@ public class Module {
   @SerializedName(SERIALIZED_NAME_SUCCESSORS)
   private Set<Module> successors;
 
-  public static final String SERIALIZED_NAME_SUBMODULES = "submodules";
-  @SerializedName(SERIALIZED_NAME_SUBMODULES)
-  private Set<Module> submodules;
-
   public Module() {
   }
 
@@ -121,6 +125,25 @@ public class Module {
   }
 
 
+  public Module version(String version) {
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public String getVersion() {
+    return version;
+  }
+
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
+
   public Module name(String name) {
     this.name = name;
     return this;
@@ -137,6 +160,25 @@ public class Module {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public Module applicationIdentifier(String applicationIdentifier) {
+    this.applicationIdentifier = applicationIdentifier;
+    return this;
+  }
+
+   /**
+   * Get applicationIdentifier
+   * @return applicationIdentifier
+  **/
+  @jakarta.annotation.Nullable
+  public String getApplicationIdentifier() {
+    return applicationIdentifier;
+  }
+
+  public void setApplicationIdentifier(String applicationIdentifier) {
+    this.applicationIdentifier = applicationIdentifier;
   }
 
 
@@ -305,33 +347,6 @@ public class Module {
   }
 
 
-  public Module submodules(Set<Module> submodules) {
-    this.submodules = submodules;
-    return this;
-  }
-
-  public Module addSubmodulesItem(Module submodulesItem) {
-    if (this.submodules == null) {
-      this.submodules = new LinkedHashSet<>();
-    }
-    this.submodules.add(submodulesItem);
-    return this;
-  }
-
-   /**
-   * Get submodules
-   * @return submodules
-  **/
-  @jakarta.annotation.Nullable
-  public Set<Module> getSubmodules() {
-    return submodules;
-  }
-
-  public void setSubmodules(Set<Module> submodules) {
-    this.submodules = submodules;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -343,20 +358,21 @@ public class Module {
     }
     Module module = (Module) o;
     return Objects.equals(this.id, module.id) &&
+        Objects.equals(this.version, module.version) &&
         Objects.equals(this.name, module.name) &&
+        Objects.equals(this.applicationIdentifier, module.applicationIdentifier) &&
         Objects.equals(this.description, module.description) &&
         Objects.equals(this.useAI, module.useAI) &&
         Objects.equals(this.model, module.model) &&
         Objects.equals(this.actionTypes, module.actionTypes) &&
         Objects.equals(this.decisionTypes, module.decisionTypes) &&
         Objects.equals(this.sBOMLocation, module.sBOMLocation) &&
-        Objects.equals(this.successors, module.successors) &&
-        Objects.equals(this.submodules, module.submodules);
+        Objects.equals(this.successors, module.successors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, useAI, model, actionTypes, decisionTypes, sBOMLocation, successors, submodules);
+    return Objects.hash(id, version, name, applicationIdentifier, description, useAI, model, actionTypes, decisionTypes, sBOMLocation, successors);
   }
 
   @Override
@@ -364,7 +380,9 @@ public class Module {
     StringBuilder sb = new StringBuilder();
     sb.append("class Module {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    applicationIdentifier: ").append(toIndentedString(applicationIdentifier)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    useAI: ").append(toIndentedString(useAI)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
@@ -372,7 +390,6 @@ public class Module {
     sb.append("    decisionTypes: ").append(toIndentedString(decisionTypes)).append("\n");
     sb.append("    sBOMLocation: ").append(toIndentedString(sBOMLocation)).append("\n");
     sb.append("    successors: ").append(toIndentedString(successors)).append("\n");
-    sb.append("    submodules: ").append(toIndentedString(submodules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -396,7 +413,9 @@ public class Module {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
+    openapiFields.add("version");
     openapiFields.add("name");
+    openapiFields.add("applicationIdentifier");
     openapiFields.add("description");
     openapiFields.add("useAI");
     openapiFields.add("model");
@@ -404,7 +423,6 @@ public class Module {
     openapiFields.add("decisionTypes");
     openapiFields.add("sBOMLocation");
     openapiFields.add("successors");
-    openapiFields.add("submodules");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -431,8 +449,14 @@ public class Module {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("applicationIdentifier") != null && !jsonObj.get("applicationIdentifier").isJsonNull()) && !jsonObj.get("applicationIdentifier").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `applicationIdentifier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationIdentifier").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
@@ -480,20 +504,6 @@ public class Module {
           // validate the optional field `successors` (array)
           for (int i = 0; i < jsonArraysuccessors.size(); i++) {
             Module.validateJsonElement(jsonArraysuccessors.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("submodules") != null && !jsonObj.get("submodules").isJsonNull()) {
-        JsonArray jsonArraysubmodules = jsonObj.getAsJsonArray("submodules");
-        if (jsonArraysubmodules != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("submodules").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `submodules` to be an array in the JSON string but got `%s`", jsonObj.get("submodules").toString()));
-          }
-
-          // validate the optional field `submodules` (array)
-          for (int i = 0; i < jsonArraysubmodules.size(); i++) {
-            Module.validateJsonElement(jsonArraysubmodules.get(i));
           };
         }
       }

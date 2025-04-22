@@ -19,13 +19,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.starwit.aic.model.ActionType;
-import de.starwit.aic.model.Decision;
 import de.starwit.aic.model.Module;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,7 +50,7 @@ import de.starwit.aic.JSON;
 /**
  * A type of decision that a system can derive
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T19:41:30.613174479Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T10:02:22.174100061+02:00[Europe/Berlin]")
 public class DecisionType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -71,14 +67,6 @@ public class DecisionType {
   public static final String SERIALIZED_NAME_MODULE = "module";
   @SerializedName(SERIALIZED_NAME_MODULE)
   private Module module;
-
-  public static final String SERIALIZED_NAME_DECISIONS = "decisions";
-  @SerializedName(SERIALIZED_NAME_DECISIONS)
-  private Set<Decision> decisions;
-
-  public static final String SERIALIZED_NAME_ACTION_TYPES = "actionTypes";
-  @SerializedName(SERIALIZED_NAME_ACTION_TYPES)
-  private Set<ActionType> actionTypes;
 
   public DecisionType() {
   }
@@ -159,60 +147,6 @@ public class DecisionType {
   }
 
 
-  public DecisionType decisions(Set<Decision> decisions) {
-    this.decisions = decisions;
-    return this;
-  }
-
-  public DecisionType addDecisionsItem(Decision decisionsItem) {
-    if (this.decisions == null) {
-      this.decisions = new LinkedHashSet<>();
-    }
-    this.decisions.add(decisionsItem);
-    return this;
-  }
-
-   /**
-   * Get decisions
-   * @return decisions
-  **/
-  @jakarta.annotation.Nullable
-  public Set<Decision> getDecisions() {
-    return decisions;
-  }
-
-  public void setDecisions(Set<Decision> decisions) {
-    this.decisions = decisions;
-  }
-
-
-  public DecisionType actionTypes(Set<ActionType> actionTypes) {
-    this.actionTypes = actionTypes;
-    return this;
-  }
-
-  public DecisionType addActionTypesItem(ActionType actionTypesItem) {
-    if (this.actionTypes == null) {
-      this.actionTypes = new LinkedHashSet<>();
-    }
-    this.actionTypes.add(actionTypesItem);
-    return this;
-  }
-
-   /**
-   * Get actionTypes
-   * @return actionTypes
-  **/
-  @jakarta.annotation.Nullable
-  public Set<ActionType> getActionTypes() {
-    return actionTypes;
-  }
-
-  public void setActionTypes(Set<ActionType> actionTypes) {
-    this.actionTypes = actionTypes;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -226,14 +160,12 @@ public class DecisionType {
     return Objects.equals(this.id, decisionType.id) &&
         Objects.equals(this.name, decisionType.name) &&
         Objects.equals(this.description, decisionType.description) &&
-        Objects.equals(this.module, decisionType.module) &&
-        Objects.equals(this.decisions, decisionType.decisions) &&
-        Objects.equals(this.actionTypes, decisionType.actionTypes);
+        Objects.equals(this.module, decisionType.module);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, module, decisions, actionTypes);
+    return Objects.hash(id, name, description, module);
   }
 
   @Override
@@ -244,8 +176,6 @@ public class DecisionType {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    module: ").append(toIndentedString(module)).append("\n");
-    sb.append("    decisions: ").append(toIndentedString(decisions)).append("\n");
-    sb.append("    actionTypes: ").append(toIndentedString(actionTypes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -272,8 +202,6 @@ public class DecisionType {
     openapiFields.add("name");
     openapiFields.add("description");
     openapiFields.add("module");
-    openapiFields.add("decisions");
-    openapiFields.add("actionTypes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -309,34 +237,6 @@ public class DecisionType {
       // validate the optional field `module`
       if (jsonObj.get("module") != null && !jsonObj.get("module").isJsonNull()) {
         Module.validateJsonElement(jsonObj.get("module"));
-      }
-      if (jsonObj.get("decisions") != null && !jsonObj.get("decisions").isJsonNull()) {
-        JsonArray jsonArraydecisions = jsonObj.getAsJsonArray("decisions");
-        if (jsonArraydecisions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("decisions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `decisions` to be an array in the JSON string but got `%s`", jsonObj.get("decisions").toString()));
-          }
-
-          // validate the optional field `decisions` (array)
-          for (int i = 0; i < jsonArraydecisions.size(); i++) {
-            Decision.validateJsonElement(jsonArraydecisions.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("actionTypes") != null && !jsonObj.get("actionTypes").isJsonNull()) {
-        JsonArray jsonArrayactionTypes = jsonObj.getAsJsonArray("actionTypes");
-        if (jsonArrayactionTypes != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("actionTypes").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `actionTypes` to be an array in the JSON string but got `%s`", jsonObj.get("actionTypes").toString()));
-          }
-
-          // validate the optional field `actionTypes` (array)
-          for (int i = 0; i < jsonArrayactionTypes.size(); i++) {
-            ActionType.validateJsonElement(jsonArrayactionTypes.get(i));
-          };
-        }
       }
   }
 

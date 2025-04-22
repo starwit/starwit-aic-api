@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.starwit.aic.model.ActionType;
-import de.starwit.aic.model.Decision;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
@@ -52,7 +51,7 @@ import de.starwit.aic.JSON;
 /**
  * An actual action that a system executes
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-31T19:41:30.613174479Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T10:02:22.174100061+02:00[Europe/Berlin]")
 public class Action {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -69,10 +68,6 @@ public class Action {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
-
-  public static final String SERIALIZED_NAME_DECISION = "decision";
-  @SerializedName(SERIALIZED_NAME_DECISION)
-  private Decision decision;
 
   public static final String SERIALIZED_NAME_ACTION_TYPE = "actionType";
   @SerializedName(SERIALIZED_NAME_ACTION_TYPE)
@@ -161,25 +156,6 @@ public class Action {
   }
 
 
-  public Action decision(Decision decision) {
-    this.decision = decision;
-    return this;
-  }
-
-   /**
-   * Get decision
-   * @return decision
-  **/
-  @jakarta.annotation.Nullable
-  public Decision getDecision() {
-    return decision;
-  }
-
-  public void setDecision(Decision decision) {
-    this.decision = decision;
-  }
-
-
   public Action actionType(ActionType actionType) {
     this.actionType = actionType;
     return this;
@@ -232,14 +208,13 @@ public class Action {
         Objects.equals(this.creationTime, action.creationTime) &&
         Objects.equals(this.name, action.name) &&
         Objects.equals(this.description, action.description) &&
-        Objects.equals(this.decision, action.decision) &&
         Objects.equals(this.actionType, action.actionType) &&
         Objects.equals(this.metadata, action.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, creationTime, name, description, decision, actionType, metadata);
+    return Objects.hash(id, creationTime, name, description, actionType, metadata);
   }
 
   @Override
@@ -250,7 +225,6 @@ public class Action {
     sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    decision: ").append(toIndentedString(decision)).append("\n");
     sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");
@@ -279,7 +253,6 @@ public class Action {
     openapiFields.add("creationTime");
     openapiFields.add("name");
     openapiFields.add("description");
-    openapiFields.add("decision");
     openapiFields.add("actionType");
     openapiFields.add("metadata");
 
@@ -313,10 +286,6 @@ public class Action {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      // validate the optional field `decision`
-      if (jsonObj.get("decision") != null && !jsonObj.get("decision").isJsonNull()) {
-        Decision.validateJsonElement(jsonObj.get("decision"));
       }
       // validate the optional field `actionType`
       if (jsonObj.get("actionType") != null && !jsonObj.get("actionType").isJsonNull()) {
