@@ -50,7 +50,7 @@ import de.starwit.aic.JSON;
 /**
  * Info
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-23T17:38:20.278151029Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-23T17:41:06.821598610Z[Etc/UTC]")
 public class Info {
   public static final String SERIALIZED_NAME_GENERATION_DATE = "generation-date";
   @SerializedName(SERIALIZED_NAME_GENERATION_DATE)
