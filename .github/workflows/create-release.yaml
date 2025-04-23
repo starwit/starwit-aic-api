@@ -65,6 +65,7 @@ jobs:
     - name: Generate Python lib
       working-directory: ./python
       run: |
+        ls -al
         ./generate.sh
     
     - name: Set Python lib version
