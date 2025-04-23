@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import de.starwit.aic.model.Module;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -49,7 +50,7 @@ import de.starwit.aic.JSON;
 /**
  * A type of action that a system can execute
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T10:02:22.174100061+02:00[Europe/Berlin]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-23T17:05:22.521546483+02:00[Europe/Berlin]")
 public class ActionType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -124,6 +125,10 @@ public class ActionType {
   public static final String SERIALIZED_NAME_EXECUTION_POLICY = "executionPolicy";
   @SerializedName(SERIALIZED_NAME_EXECUTION_POLICY)
   private ExecutionPolicyEnum executionPolicy;
+
+  public static final String SERIALIZED_NAME_MODULE = "module";
+  @SerializedName(SERIALIZED_NAME_MODULE)
+  private Module module;
 
   public ActionType() {
   }
@@ -223,6 +228,25 @@ public class ActionType {
   }
 
 
+  public ActionType module(Module module) {
+    this.module = module;
+    return this;
+  }
+
+   /**
+   * Get module
+   * @return module
+  **/
+  @jakarta.annotation.Nullable
+  public Module getModule() {
+    return module;
+  }
+
+  public void setModule(Module module) {
+    this.module = module;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -237,12 +261,13 @@ public class ActionType {
         Objects.equals(this.name, actionType.name) &&
         Objects.equals(this.description, actionType.description) &&
         Objects.equals(this.endpoint, actionType.endpoint) &&
-        Objects.equals(this.executionPolicy, actionType.executionPolicy);
+        Objects.equals(this.executionPolicy, actionType.executionPolicy) &&
+        Objects.equals(this.module, actionType.module);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, endpoint, executionPolicy);
+    return Objects.hash(id, name, description, endpoint, executionPolicy, module);
   }
 
   @Override
@@ -254,6 +279,7 @@ public class ActionType {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    endpoint: ").append(toIndentedString(endpoint)).append("\n");
     sb.append("    executionPolicy: ").append(toIndentedString(executionPolicy)).append("\n");
+    sb.append("    module: ").append(toIndentedString(module)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -281,6 +307,7 @@ public class ActionType {
     openapiFields.add("description");
     openapiFields.add("endpoint");
     openapiFields.add("executionPolicy");
+    openapiFields.add("module");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -322,6 +349,10 @@ public class ActionType {
       // validate the optional field `executionPolicy`
       if (jsonObj.get("executionPolicy") != null && !jsonObj.get("executionPolicy").isJsonNull()) {
         ExecutionPolicyEnum.validateJsonElement(jsonObj.get("executionPolicy"));
+      }
+      // validate the optional field `module`
+      if (jsonObj.get("module") != null && !jsonObj.get("module").isJsonNull()) {
+        Module.validateJsonElement(jsonObj.get("module"));
       }
   }
 
