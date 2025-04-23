@@ -20,6 +20,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from starwit_aic_api.models.action_type import ActionType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,10 +32,9 @@ class Action(BaseModel):
     creation_time: Optional[datetime] = Field(default=None, alias="creationTime")
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
-    decision: Optional[Decision] = None
     action_type: Optional[ActionType] = Field(default=None, alias="actionType")
     metadata: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "creationTime", "name", "description", "decision", "actionType", "metadata"]
+    __properties: ClassVar[List[str]] = ["id", "creationTime", "name", "description", "actionType", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,9 +75,6 @@ class Action(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of decision
-        if self.decision:
-            _dict['decision'] = self.decision.to_dict()
         # override the default output from pydantic by calling `to_dict()` of action_type
         if self.action_type:
             _dict['actionType'] = self.action_type.to_dict()
@@ -97,14 +94,9 @@ class Action(BaseModel):
             "creationTime": obj.get("creationTime"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "decision": Decision.from_dict(obj["decision"]) if obj.get("decision") is not None else None,
             "actionType": ActionType.from_dict(obj["actionType"]) if obj.get("actionType") is not None else None,
             "metadata": obj.get("metadata")
         })
         return _obj
 
-from starwit_aic_api.models.action_type import ActionType
-from starwit_aic_api.models.decision import Decision
-# TODO: Rewrite to not use raise_errors
-Action.model_rebuild(raise_errors=False)
 

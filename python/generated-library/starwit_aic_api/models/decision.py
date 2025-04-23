@@ -20,6 +20,9 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from starwit_aic_api.models.action import Action
+from starwit_aic_api.models.decision_type import DecisionType
+from starwit_aic_api.models.module import Module
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -128,9 +131,4 @@ class Decision(BaseModel):
         })
         return _obj
 
-from starwit_aic_api.models.action import Action
-from starwit_aic_api.models.decision_type import DecisionType
-from starwit_aic_api.models.module import Module
-# TODO: Rewrite to not use raise_errors
-Decision.model_rebuild(raise_errors=False)
 

@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **creation_time** | **datetime** |  | [optional] 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**decision** | [**Decision**](Decision.md) |  | [optional] 
 **action_type** | [**ActionType**](ActionType.md) |  | [optional] 
 **metadata** | **str** |  | [optional] 
 

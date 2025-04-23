@@ -38,9 +38,53 @@ class TestDecisionType(unittest.TestCase):
                 id = 56,
                 name = '',
                 description = '',
+                action_types = [
+                    starwit_aic_api.models.action_type.ActionType(
+                        id = 56, 
+                        name = '', 
+                        description = '', 
+                        endpoint = '', 
+                        execution_policy = 'MANUAL', 
+                        module = starwit_aic_api.models.module.Module(
+                            id = 56, 
+                            version = '', 
+                            name = '', 
+                            application_identifier = '', 
+                            description = '', 
+                            use_ai = True, 
+                            model = starwit_aic_api.models.ai_model.AIModel(
+                                name = '', 
+                                version = '', 
+                                last_deployment = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                                model_type = 'LLM', 
+                                model_link = '', 
+                                public_training_data = True, 
+                                link_to_public_training_data = '', ), 
+                            decision_types = [
+                                starwit_aic_api.models.decision_type.DecisionType(
+                                    id = 56, 
+                                    name = '', 
+                                    description = '', )
+                                ], 
+                            s_bom_location = {
+                                'key' : starwit_aic_api.models.module_s_bom_location_value.Module_sBOMLocation_value(
+                                    url = '', )
+                                }, 
+                            successors = [
+                                starwit_aic_api.models.module.Module(
+                                    id = 56, 
+                                    version = '', 
+                                    name = '', 
+                                    application_identifier = '', 
+                                    description = '', 
+                                    use_ai = True, )
+                                ], ), )
+                    ],
                 module = starwit_aic_api.models.module.Module(
                     id = 56, 
+                    version = '', 
                     name = '', 
+                    application_identifier = '', 
                     description = '', 
                     use_ai = True, 
                     model = starwit_aic_api.models.ai_model.AIModel(
@@ -57,56 +101,14 @@ class TestDecisionType(unittest.TestCase):
                             name = '', 
                             description = '', 
                             endpoint = '', 
-                            execution_policy = 'MANUAL', 
-                            actions = [
-                                starwit_aic_api.models.action.Action(
-                                    id = 56, 
-                                    creation_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                    name = '', 
-                                    description = '', 
-                                    decision = starwit_aic_api.models.decision.Decision(
-                                        id = 56, 
-                                        acquisition_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                        media_url = '', 
-                                        action_visualization_url = '', 
-                                        camera_latitude = 1.337, 
-                                        camera_longitude = 1.337, 
-                                        state = 'NEW', 
-                                        description = '', 
-                                        decision_type = starwit_aic_api.models.decision_type.DecisionType(
-                                            id = 56, 
-                                            name = '', 
-                                            description = '', 
-                                            decisions = [
-                                                starwit_aic_api.models.decision.Decision(
-                                                    id = 56, 
-                                                    acquisition_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                                    media_url = '', 
-                                                    action_visualization_url = '', 
-                                                    camera_latitude = 1.337, 
-                                                    camera_longitude = 1.337, 
-                                                    state = 'NEW', 
-                                                    description = '', )
-                                                ], ), ), 
-                                    action_type = starwit_aic_api.models.action_type.ActionType(
-                                        id = 56, 
-                                        name = '', 
-                                        description = '', 
-                                        endpoint = '', 
-                                        execution_policy = 'MANUAL', 
-                                        decision_types = [
-                                            starwit_aic_api.models.decision_type.DecisionType(
-                                                id = 56, 
-                                                name = '', 
-                                                description = '', )
-                                            ], ), 
-                                    metadata = '', )
-                                ], 
-                            decision_types = [
-                                
-                                ], )
+                            execution_policy = 'MANUAL', )
                         ], 
-                    decision_types = , 
+                    decision_types = [
+                        starwit_aic_api.models.decision_type.DecisionType(
+                            id = 56, 
+                            name = '', 
+                            description = '', )
+                        ], 
                     s_bom_location = {
                         'key' : starwit_aic_api.models.module_s_bom_location_value.Module_sBOMLocation_value(
                             url = '', )
@@ -114,204 +116,12 @@ class TestDecisionType(unittest.TestCase):
                     successors = [
                         starwit_aic_api.models.module.Module(
                             id = 56, 
+                            version = '', 
                             name = '', 
+                            application_identifier = '', 
                             description = '', 
-                            use_ai = True, 
-                            submodules = [
-                                
-                                ], )
-                        ], 
-                    submodules = [
-                        
-                        ], ),
-                decisions = [
-                    starwit_aic_api.models.decision.Decision(
-                        id = 56, 
-                        acquisition_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        media_url = '', 
-                        action_visualization_url = '', 
-                        camera_latitude = 1.337, 
-                        camera_longitude = 1.337, 
-                        state = 'NEW', 
-                        description = '', 
-                        module = starwit_aic_api.models.module.Module(
-                            id = 56, 
-                            name = '', 
-                            description = '', 
-                            use_ai = True, 
-                            model = starwit_aic_api.models.ai_model.AIModel(
-                                name = '', 
-                                version = '', 
-                                last_deployment = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                model_type = 'LLM', 
-                                model_link = '', 
-                                public_training_data = True, 
-                                link_to_public_training_data = '', ), 
-                            action_types = [
-                                starwit_aic_api.models.action_type.ActionType(
-                                    id = 56, 
-                                    name = '', 
-                                    description = '', 
-                                    endpoint = '', 
-                                    execution_policy = 'MANUAL', 
-                                    actions = [
-                                        starwit_aic_api.models.action.Action(
-                                            id = 56, 
-                                            creation_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                            name = '', 
-                                            description = '', 
-                                            decision = starwit_aic_api.models.decision.Decision(
-                                                id = 56, 
-                                                acquisition_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                                media_url = '', 
-                                                action_visualization_url = '', 
-                                                camera_latitude = 1.337, 
-                                                camera_longitude = 1.337, 
-                                                state = 'NEW', 
-                                                description = '', 
-                                                decision_type = starwit_aic_api.models.decision_type.DecisionType(
-                                                    id = 56, 
-                                                    name = '', 
-                                                    description = '', ), ), 
-                                            action_type = starwit_aic_api.models.action_type.ActionType(
-                                                id = 56, 
-                                                name = '', 
-                                                description = '', 
-                                                endpoint = '', 
-                                                execution_policy = 'MANUAL', 
-                                                decision_types = [
-                                                    starwit_aic_api.models.decision_type.DecisionType(
-                                                        id = 56, 
-                                                        name = '', 
-                                                        description = '', )
-                                                    ], ), 
-                                            metadata = '', )
-                                        ], 
-                                    decision_types = [
-                                        
-                                        ], )
-                                ], 
-                            decision_types = , 
-                            s_bom_location = {
-                                'key' : starwit_aic_api.models.module_s_bom_location_value.Module_sBOMLocation_value(
-                                    url = '', )
-                                }, 
-                            successors = [
-                                starwit_aic_api.models.module.Module(
-                                    id = 56, 
-                                    name = '', 
-                                    description = '', 
-                                    use_ai = True, 
-                                    submodules = [
-                                        
-                                        ], )
-                                ], 
-                            submodules = [
-                                
-                                ], ), 
-                        decision_type = , 
-                        actions = [
-                            starwit_aic_api.models.action.Action(
-                                id = 56, 
-                                creation_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                name = '', 
-                                description = '', 
-                                metadata = '', )
-                            ], )
-                    ],
-                action_types = [
-                    starwit_aic_api.models.action_type.ActionType(
-                        id = 56, 
-                        name = '', 
-                        description = '', 
-                        endpoint = '', 
-                        execution_policy = 'MANUAL', 
-                        module = starwit_aic_api.models.module.Module(
-                            id = 56, 
-                            name = '', 
-                            description = '', 
-                            use_ai = True, 
-                            model = starwit_aic_api.models.ai_model.AIModel(
-                                name = '', 
-                                version = '', 
-                                last_deployment = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                model_type = 'LLM', 
-                                model_link = '', 
-                                public_training_data = True, 
-                                link_to_public_training_data = '', ), 
-                            decision_types = [
-                                starwit_aic_api.models.decision_type.DecisionType(
-                                    id = 56, 
-                                    name = '', 
-                                    description = '', 
-                                    decisions = [
-                                        starwit_aic_api.models.decision.Decision(
-                                            id = 56, 
-                                            acquisition_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                            media_url = '', 
-                                            action_visualization_url = '', 
-                                            camera_latitude = 1.337, 
-                                            camera_longitude = 1.337, 
-                                            state = 'NEW', 
-                                            description = '', 
-                                            decision_type = starwit_aic_api.models.decision_type.DecisionType(
-                                                id = 56, 
-                                                name = '', 
-                                                description = '', ), 
-                                            actions = [
-                                                starwit_aic_api.models.action.Action(
-                                                    id = 56, 
-                                                    creation_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                                    name = '', 
-                                                    description = '', 
-                                                    decision = starwit_aic_api.models.decision.Decision(
-                                                        id = 56, 
-                                                        acquisition_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                                        media_url = '', 
-                                                        action_visualization_url = '', 
-                                                        camera_latitude = 1.337, 
-                                                        camera_longitude = 1.337, 
-                                                        state = 'NEW', 
-                                                        description = '', ), 
-                                                    action_type = starwit_aic_api.models.action_type.ActionType(
-                                                        id = 56, 
-                                                        name = '', 
-                                                        description = '', 
-                                                        endpoint = '', 
-                                                        execution_policy = 'MANUAL', ), 
-                                                    metadata = '', )
-                                                ], )
-                                        ], )
-                                ], 
-                            s_bom_location = {
-                                'key' : starwit_aic_api.models.module_s_bom_location_value.Module_sBOMLocation_value(
-                                    url = '', )
-                                }, 
-                            successors = [
-                                starwit_aic_api.models.module.Module(
-                                    id = 56, 
-                                    name = '', 
-                                    description = '', 
-                                    use_ai = True, 
-                                    submodules = [
-                                        
-                                        ], )
-                                ], 
-                            submodules = [
-                                
-                                ], ), 
-                        actions = [
-                            starwit_aic_api.models.action.Action(
-                                id = 56, 
-                                creation_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                name = '', 
-                                description = '', 
-                                metadata = '', )
-                            ], 
-                        decision_types = [
-                            
-                            ], )
-                    ]
+                            use_ai = True, )
+                        ], )
             )
         else:
             return DecisionType(

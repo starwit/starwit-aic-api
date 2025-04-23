@@ -29,7 +29,9 @@ class Module(BaseModel):
     Module
     """ # noqa: E501
     id: Optional[StrictInt] = None
+    version: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
+    application_identifier: Optional[StrictStr] = Field(default=None, alias="applicationIdentifier")
     description: Optional[StrictStr] = None
     use_ai: Optional[StrictBool] = Field(default=None, alias="useAI")
     model: Optional[AIModel] = None
@@ -37,8 +39,7 @@ class Module(BaseModel):
     decision_types: Optional[List[DecisionType]] = Field(default=None, alias="decisionTypes")
     s_bom_location: Optional[Dict[str, ModuleSBOMLocationValue]] = Field(default=None, alias="sBOMLocation")
     successors: Optional[List[Module]] = None
-    submodules: Optional[List[Module]] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "useAI", "model", "actionTypes", "decisionTypes", "sBOMLocation", "successors", "submodules"]
+    __properties: ClassVar[List[str]] = ["id", "version", "name", "applicationIdentifier", "description", "useAI", "model", "actionTypes", "decisionTypes", "sBOMLocation", "successors"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -110,13 +111,6 @@ class Module(BaseModel):
                 if _item_successors:
                     _items.append(_item_successors.to_dict())
             _dict['successors'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in submodules (list)
-        _items = []
-        if self.submodules:
-            for _item_submodules in self.submodules:
-                if _item_submodules:
-                    _items.append(_item_submodules.to_dict())
-            _dict['submodules'] = _items
         return _dict
 
     @classmethod
@@ -130,7 +124,9 @@ class Module(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
+            "version": obj.get("version"),
             "name": obj.get("name"),
+            "applicationIdentifier": obj.get("applicationIdentifier"),
             "description": obj.get("description"),
             "useAI": obj.get("useAI"),
             "model": AIModel.from_dict(obj["model"]) if obj.get("model") is not None else None,
@@ -142,8 +138,7 @@ class Module(BaseModel):
             )
             if obj.get("sBOMLocation") is not None
             else None,
-            "successors": [Module.from_dict(_item) for _item in obj["successors"]] if obj.get("successors") is not None else None,
-            "submodules": [Module.from_dict(_item) for _item in obj["submodules"]] if obj.get("submodules") is not None else None
+            "successors": [Module.from_dict(_item) for _item in obj["successors"]] if obj.get("successors") is not None else None
         })
         return _obj
 

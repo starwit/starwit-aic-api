@@ -338,8 +338,6 @@ No authorization required
 # **get_info**
 > List[Info] get_info()
 
-
-
 shall deliver info on interface version and hosting system, readonly
 
 ### Example

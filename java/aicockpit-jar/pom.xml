@@ -4,7 +4,7 @@
 
     <groupId>de.starwit.aic</groupId>
     <artifactId>aicockpit-api</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <description>Data model for AI Cockpit interfaces</description>
     <url>http://starwit.de</url>
     <packaging>jar</packaging>

@@ -9,9 +9,8 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**module** | [**Module**](Module.md) |  | [optional] 
-**decisions** | [**List[Decision]**](Decision.md) |  | [optional] 
 **action_types** | [**List[ActionType]**](ActionType.md) |  | [optional] 
+**module** | [**Module**](Module.md) |  | [optional] 
 
 ## Example
 

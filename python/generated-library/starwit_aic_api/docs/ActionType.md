@@ -12,8 +12,6 @@ Name | Type | Description | Notes
 **endpoint** | **str** |  | [optional] 
 **execution_policy** | **str** |  | [optional] 
 **module** | [**Module**](Module.md) |  | [optional] 
-**actions** | [**List[Action]**](Action.md) |  | [optional] 
-**decision_types** | [**List[DecisionType]**](DecisionType.md) |  | [optional] 
 
 ## Example
 

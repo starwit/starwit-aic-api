@@ -6,7 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
+**version** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**application_identifier** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **use_ai** | **bool** |  | [optional] 
 **model** | [**AIModel**](AIModel.md) |  | [optional] 
@@ -14,7 +16,6 @@ Name | Type | Description | Notes
 **decision_types** | [**List[DecisionType]**](DecisionType.md) |  | [optional] 
 **s_bom_location** | [**Dict[str, ModuleSBOMLocationValue]**](ModuleSBOMLocationValue.md) |  | [optional] 
 **successors** | [**List[Module]**](Module.md) |  | [optional] 
-**submodules** | [**List[Module]**](Module.md) |  | [optional] 
 
 ## Example
 

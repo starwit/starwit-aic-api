@@ -19,9 +19,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import de.starwit.aic.model.ActionType;
 import de.starwit.aic.model.Module;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +53,7 @@ import de.starwit.aic.JSON;
 /**
  * A type of decision that a system can derive
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-23T17:05:22.521546483+02:00[Europe/Berlin]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-23T17:38:20.278151029Z[Etc/UTC]")
 public class DecisionType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -63,6 +66,10 @@ public class DecisionType {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_ACTION_TYPES = "actionTypes";
+  @SerializedName(SERIALIZED_NAME_ACTION_TYPES)
+  private Set<ActionType> actionTypes;
 
   public static final String SERIALIZED_NAME_MODULE = "module";
   @SerializedName(SERIALIZED_NAME_MODULE)
@@ -128,6 +135,33 @@ public class DecisionType {
   }
 
 
+  public DecisionType actionTypes(Set<ActionType> actionTypes) {
+    this.actionTypes = actionTypes;
+    return this;
+  }
+
+  public DecisionType addActionTypesItem(ActionType actionTypesItem) {
+    if (this.actionTypes == null) {
+      this.actionTypes = new LinkedHashSet<>();
+    }
+    this.actionTypes.add(actionTypesItem);
+    return this;
+  }
+
+   /**
+   * Get actionTypes
+   * @return actionTypes
+  **/
+  @jakarta.annotation.Nullable
+  public Set<ActionType> getActionTypes() {
+    return actionTypes;
+  }
+
+  public void setActionTypes(Set<ActionType> actionTypes) {
+    this.actionTypes = actionTypes;
+  }
+
+
   public DecisionType module(Module module) {
     this.module = module;
     return this;
@@ -160,12 +194,13 @@ public class DecisionType {
     return Objects.equals(this.id, decisionType.id) &&
         Objects.equals(this.name, decisionType.name) &&
         Objects.equals(this.description, decisionType.description) &&
+        Objects.equals(this.actionTypes, decisionType.actionTypes) &&
         Objects.equals(this.module, decisionType.module);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, module);
+    return Objects.hash(id, name, description, actionTypes, module);
   }
 
   @Override
@@ -175,6 +210,7 @@ public class DecisionType {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    actionTypes: ").append(toIndentedString(actionTypes)).append("\n");
     sb.append("    module: ").append(toIndentedString(module)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -201,6 +237,7 @@ public class DecisionType {
     openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("description");
+    openapiFields.add("actionTypes");
     openapiFields.add("module");
 
     // a set of required properties/fields (JSON key names)
@@ -233,6 +270,20 @@ public class DecisionType {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if (jsonObj.get("actionTypes") != null && !jsonObj.get("actionTypes").isJsonNull()) {
+        JsonArray jsonArrayactionTypes = jsonObj.getAsJsonArray("actionTypes");
+        if (jsonArrayactionTypes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("actionTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `actionTypes` to be an array in the JSON string but got `%s`", jsonObj.get("actionTypes").toString()));
+          }
+
+          // validate the optional field `actionTypes` (array)
+          for (int i = 0; i < jsonArrayactionTypes.size(); i++) {
+            ActionType.validateJsonElement(jsonArrayactionTypes.get(i));
+          };
+        }
       }
       // validate the optional field `module`
       if (jsonObj.get("module") != null && !jsonObj.get("module").isJsonNull()) {

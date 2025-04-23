@@ -32,9 +32,7 @@ class ActionType(BaseModel):
     endpoint: Optional[StrictStr] = None
     execution_policy: Optional[StrictStr] = Field(default=None, alias="executionPolicy")
     module: Optional[Module] = None
-    actions: Optional[List[Action]] = None
-    decision_types: Optional[List[DecisionType]] = Field(default=None, alias="decisionTypes")
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "endpoint", "executionPolicy", "module", "actions", "decisionTypes"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "endpoint", "executionPolicy", "module"]
 
     @field_validator('execution_policy')
     def execution_policy_validate_enum(cls, value):
@@ -88,20 +86,6 @@ class ActionType(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of module
         if self.module:
             _dict['module'] = self.module.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in actions (list)
-        _items = []
-        if self.actions:
-            for _item_actions in self.actions:
-                if _item_actions:
-                    _items.append(_item_actions.to_dict())
-            _dict['actions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in decision_types (list)
-        _items = []
-        if self.decision_types:
-            for _item_decision_types in self.decision_types:
-                if _item_decision_types:
-                    _items.append(_item_decision_types.to_dict())
-            _dict['decisionTypes'] = _items
         return _dict
 
     @classmethod
@@ -119,14 +103,10 @@ class ActionType(BaseModel):
             "description": obj.get("description"),
             "endpoint": obj.get("endpoint"),
             "executionPolicy": obj.get("executionPolicy"),
-            "module": Module.from_dict(obj["module"]) if obj.get("module") is not None else None,
-            "actions": [Action.from_dict(_item) for _item in obj["actions"]] if obj.get("actions") is not None else None,
-            "decisionTypes": [DecisionType.from_dict(_item) for _item in obj["decisionTypes"]] if obj.get("decisionTypes") is not None else None
+            "module": Module.from_dict(obj["module"]) if obj.get("module") is not None else None
         })
         return _obj
 
-from starwit_aic_api.models.action import Action
-from starwit_aic_api.models.decision_type import DecisionType
 from starwit_aic_api.models.module import Module
 # TODO: Rewrite to not use raise_errors
 ActionType.model_rebuild(raise_errors=False)
