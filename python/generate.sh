@@ -11,6 +11,7 @@ mkdir -p ${GENERATOR_TARGET}
 openapi-generator-cli generate -g python \
     -o ${GENERATOR_TARGET} \
     -i ../ai-cockpit-api/aicockpit-api/decision-api.yaml \
+    -- --snake-case-field = false \
     --additional-properties=generateSourceCodeOnly=true,packageName=starwit_aic_api
 
 mkdir -p ${PACKAGING_DIR}/starwit_aic_api/
