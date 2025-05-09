@@ -49,12 +49,6 @@ jobs:
       with:
         fetch-depth: '0'
 
-    - name: Checkout ki-cockpit/ai-cockpit-api
-      uses: actions/checkout@v4
-      with:
-        repository: ki-cockpit/ai-cockpit-api
-        path: ai-cockpit-api
-
     - name: Set up openapi-generator-cli
       run: |
         npm install @openapitools/openapi-generator-cli -g
