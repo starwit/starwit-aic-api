@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    AI Cockpit Decisions
+    AI Cockpit Transparency
 
     This API is part of project AI cockpit.   For more details see: https://www.kicockpit.eu/ 
 
@@ -26,51 +26,33 @@ class TestDefaultApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_create_decision(self) -> None:
-        """Test case for create_decision
-
-        Create decision
-        """
-        pass
-
-    def test_get_actions_by_id(self) -> None:
-        """Test case for get_actions_by_id
-
-        Get action by id
-        """
-        pass
-
-    def test_get_all_actions(self) -> None:
-        """Test case for get_all_actions
-
-        Get all actions
-        """
-        pass
-
-    def test_get_all_decisions(self) -> None:
-        """Test case for get_all_decisions
-
-        Get all decisions
-        """
-        pass
-
-    def test_get_decisions_by_id(self) -> None:
-        """Test case for get_decisions_by_id
-
-        Get decisions by id
-        """
-        pass
-
     def test_get_info(self) -> None:
         """Test case for get_info
 
         """
         pass
 
-    def test_save3(self) -> None:
-        """Test case for save3
+    def test_get_module(self) -> None:
+        """Test case for get_module
 
-        Create action
+        """
+        pass
+
+    def test_get_modules(self) -> None:
+        """Test case for get_modules
+
+        """
+        pass
+
+    def test_register_module(self) -> None:
+        """Test case for register_module
+
+        """
+        pass
+
+    def test_update_module(self) -> None:
+        """Test case for update_module
+
         """
         pass
 

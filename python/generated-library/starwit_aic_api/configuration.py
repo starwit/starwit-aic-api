@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    AI Cockpit Decisions
+    AI Cockpit Transparency
 
     This API is part of project AI cockpit.   For more details see: https://www.kicockpit.eu/ 
 
@@ -188,7 +188,7 @@ class Configuration:
     ) -> None:
         """Constructor
         """
-        self._base_path = "http://localhost:8081/api/v0" if host is None else host
+        self._base_path = "http://localhost:8080/api/v0" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -511,7 +511,7 @@ class Configuration:
         """
         return [
             {
-                'url': "http://localhost:8081/api/v0",
+                'url': "http://localhost:8080/api/v0",
                 'description': "No description provided",
             }
         ]
