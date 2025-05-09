@@ -15,7 +15,7 @@ env:
 
 jobs:
   build:
-    name: "Creating maven and github release"
+    name: "Create python lib, do maven and github release"
     runs-on: [self-hosted, linux, X64]
     outputs:
       VERSION_BUILD: ${{ steps.get-version.outputs.VERSION_BUILD }}     

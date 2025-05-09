@@ -9,9 +9,9 @@ on:
 
 
 jobs:
-  build-javalib:
-    name: "Install software"
-    runs-on: ubuntu-latest
+  build:
+    name: "Build python and java libraries"
+    runs-on: [self-hosted, linux, X64]
 
     steps:    
     - name: Set up JDK 21
