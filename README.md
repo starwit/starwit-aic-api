@@ -22,6 +22,10 @@ For other Java build tools, please refer to their respective documentation, to u
 Add the following to your `pyproject.toml` dependencies section:\
   `starwit_aic_api = { git = "https://github.com/starwit/starwit-aic-api.git", subdirectory = "python/generated-library", tag = "0.0.9" }`
 
+## Dev
+### Run/Debug Github Actions locally
+`act -W .github/workflows/create-release.yaml --input-file local.inputs --secret-file local.secrets -P self-hosted=-self-hosted`
+
 ## Contact & Contribution
 This project was partly funded by the government of the federal republic of Germany. It is part of a research project aiming to keep _humans in command_ and is organized by the Federal Ministry of Labour and Social Affairs.
 
