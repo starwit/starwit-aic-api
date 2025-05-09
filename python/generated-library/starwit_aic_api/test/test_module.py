@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    AI Cockpit Decisions
+    AI Cockpit Transparency
 
     This API is part of project AI cockpit.   For more details see: https://www.kicockpit.eu/ 
 
@@ -71,6 +71,14 @@ class TestModule(unittest.TestCase):
                                 model_link = '', 
                                 public_training_data = True, 
                                 link_to_public_training_data = '', ), 
+                            action_types = [
+                                starwit_aic_api.models.action_type.ActionType(
+                                    id = 56, 
+                                    name = '', 
+                                    description = '', 
+                                    endpoint = '', 
+                                    execution_policy = 'MANUAL', )
+                                ], 
                             decision_types = [
                                 starwit_aic_api.models.decision_type.DecisionType(
                                     id = 56, 
