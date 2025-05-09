@@ -8,6 +8,7 @@ rm -rf spec_files
 mkdir spec_files
 curl -s -o spec_files/decision-api.yaml https://raw.githubusercontent.com/KI-Cockpit/ai-cockpit-api/refs/heads/main/aicockpit-api/decision-api.yaml
 curl -s -o spec_files/configurationtypes.yaml https://raw.githubusercontent.com/KI-Cockpit/ai-cockpit-api/refs/heads/main/aicockpit-api/configurationtypes.yaml
+curl -s -o spec_files/transparency-api.yaml https://raw.githubusercontent.com/KI-Cockpit/ai-cockpit-api/refs/heads/main/aicockpit-api/transparency-api.yaml
 
 rm -rf ${GENERATOR_TARGET} openapitools.json
 rm -rf ${PACKAGING_DIR}/starwit_aic_api/

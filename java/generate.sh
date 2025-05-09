@@ -8,8 +8,10 @@ rm -r aicockpit-jar/target
 
 echo "downloading api spec files"
 mkdir spec_files
-curl -o spec_files/decision-api.yaml https://raw.githubusercontent.com/KI-Cockpit/ai-cockpit-api/refs/heads/main/aicockpit-api/decision-api.yaml
-curl -o spec_files/configurationtypes.yaml https://raw.githubusercontent.com/KI-Cockpit/ai-cockpit-api/refs/heads/main/aicockpit-api/configurationtypes.yaml
+curl -s -o spec_files/decision-api.yaml https://raw.githubusercontent.com/KI-Cockpit/ai-cockpit-api/refs/heads/main/aicockpit-api/decision-api.yaml
+curl -s -o spec_files/configurationtypes.yaml https://raw.githubusercontent.com/KI-Cockpit/ai-cockpit-api/refs/heads/main/aicockpit-api/configurationtypes.yaml
+curl -s -o spec_files/transparency-api.yaml https://raw.githubusercontent.com/KI-Cockpit/ai-cockpit-api/refs/heads/main/aicockpit-api/transparency-api.yaml
+
 
 echo "generate code"
 mvn compile
