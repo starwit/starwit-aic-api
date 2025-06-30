@@ -9,8 +9,8 @@ on:
 
 
 jobs:
-  build:
-    name: "Build python and java libraries"
+  build-java:
+    name: "Build java library"
     runs-on: [self-hosted, linux, X64]
 
     steps:    
@@ -25,19 +25,34 @@ jobs:
       with:
          maven-version: 3.9.2
 
-    - name: Set up Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.12' 
-
     - name: checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: '0'
+    
+    - name: Generate Java lib
+      working-directory: ./java
+      run: |
+        ./generate.sh     
+
+  build-python:
+    name: "Build Python"
+    runs-on: [self-hosted, linux, X64]
+
+    steps:    
+    - name: checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: '0'
+        
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
 
     - name: Set up openapi-generator-cli
       run: |
@@ -55,8 +70,3 @@ jobs:
       working-directory: ./python/generated-library
       run: |
         poetry version ${{ env.RELEASE_VERSION }}
-    
-    - name: Generate Java lib
-      working-directory: ./java
-      run: |
-        ./generate.sh     
