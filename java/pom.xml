@@ -22,7 +22,7 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>7.2.0</version>
+                <version>7.13.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -33,9 +33,9 @@
                             <configOptions>
                                 <useJakartaEe>true</useJakartaEe>
                             </configOptions>
-                            <inputSpec>
-                                ../../ai-cockpit-api/aicockpit-api/decision-api.yaml
-                            </inputSpec>
+                            <inputSpecRootDirectory>
+                                ./spec_files
+                            </inputSpecRootDirectory>
                             <generatorName>java</generatorName>
                             <modelPackage>de.starwit.aic.model</modelPackage>
                             <generateSupportingFiles>true</generateSupportingFiles>

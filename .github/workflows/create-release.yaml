@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       RELEASE_VERSION:
-        description: "Set release version"
+        description: "Set release version (required)"
         required: true
 
 permissions:
@@ -15,7 +15,7 @@ env:
 
 jobs:
   build:
-    name: "Creating maven and github release"
+    name: "Create python lib, do maven and github release"
     runs-on: [self-hosted, linux, X64]
     outputs:
       VERSION_BUILD: ${{ steps.get-version.outputs.VERSION_BUILD }}     
@@ -49,12 +49,6 @@ jobs:
       with:
         fetch-depth: '0'
 
-    - name: Checkout ki-cockpit/ai-cockpit-api
-      uses: actions/checkout@v4
-      with:
-        repository: ki-cockpit/ai-cockpit-api
-        path: ai-cockpit-api
-
     - name: Set up openapi-generator-cli
       run: |
         npm install @openapitools/openapi-generator-cli -g
@@ -65,7 +59,6 @@ jobs:
     - name: Generate Python lib
       working-directory: ./python
       run: |
-        ls -al
         ./generate.sh
     
     - name: Set Python lib version

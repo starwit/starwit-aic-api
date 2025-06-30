@@ -2,7 +2,7 @@
 
 # flake8: noqa
 """
-    AI Cockpit Decisions
+    AI Cockpit Transparency
 
     This API is part of project AI cockpit.   For more details see: https://www.kicockpit.eu/ 
 
@@ -16,9 +16,7 @@
 # import models into model package
 from starwit_aic_api.models.ai_model import AIModel
 from starwit_aic_api.models.ai_model_type import AIModelType
-from starwit_aic_api.models.action import Action
 from starwit_aic_api.models.action_type import ActionType
-from starwit_aic_api.models.decision import Decision
 from starwit_aic_api.models.decision_type import DecisionType
 from starwit_aic_api.models.info import Info
 from starwit_aic_api.models.module import Module

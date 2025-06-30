@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    AI Cockpit Decisions
+    AI Cockpit Transparency
 
     This API is part of project AI cockpit.   For more details see: https://www.kicockpit.eu/ 
 
