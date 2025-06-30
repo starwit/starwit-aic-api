@@ -1,0 +1,55 @@
+name: Publish libraries
+
+on:
+  workflow_dispatch:
+    inputs:
+      RELEASE_VERSION:
+        description: "Set release version (required)"
+        required: true
+  pull_request: 
+
+permissions:
+  contents: write
+
+env:
+  RELEASE_VERSION: ${{ github.event.inputs.RELEASE_VERSION }}
+
+jobs:
+  publish_libs:
+    name: "Publish libraries"
+    runs-on: [self-hosted, linux, X64]
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: '0'
+        ref: ${{ env.RELEASE_VERSION }}
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: 21
+
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v5
+      with:
+         maven-version: 3.9.2
+         
+    - name: Build Maven project
+      working-directory: ./java/aicockpit-jar
+      run: mvn clean -B package
+      env:
+         CI: false
+         MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+         MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+
+    - name: Publish Maven package to Maven Central
+      working-directory: ./java/aicockpit-jar
+      run: mvn deploy --settings ${{ github.workspace }}/.github/workflows/settings.xml
+      env:
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+        MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}        
+        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}

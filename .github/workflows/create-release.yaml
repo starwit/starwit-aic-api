@@ -1,4 +1,4 @@
-name: Create release and publish
+name: Generate code and create release
 
 on:
   workflow_dispatch:
@@ -98,30 +98,4 @@ jobs:
       env:
          CI: false
     
-  publish_libs:
-    name: "Publish libraries"
-    runs-on: [self-hosted, linux, X64]
-    needs: build
 
-    steps:
-    - name: checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: '0'
-        ref: ${{ env.RELEASE_VERSION }}
-    - name: Build Maven project
-      working-directory: ./java/aicockpit-jar
-      run: mvn clean -B package
-      env:
-         CI: false
-         MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-         MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
-
-    - name: Publish Maven package to Maven Central
-      working-directory: ./java/aicockpit-jar
-      run: mvn deploy --settings ${{ github.workspace }}/.github/workflows/settings.xml
-      env:
-        MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-        MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}        
-        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
