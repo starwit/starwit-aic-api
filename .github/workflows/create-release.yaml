@@ -15,7 +15,7 @@ env:
 
 jobs:
   build:
-    name: "Create python lib, do maven and github release"
+    name: "Generate code for Python and Java. Create Github tag"
     runs-on: [self-hosted, linux, X64]
     outputs:
       VERSION_BUILD: ${{ steps.get-version.outputs.VERSION_BUILD }}     
@@ -101,9 +101,9 @@ jobs:
   publish_libs:
     name: "Publish libraries"
     runs-on: [self-hosted, linux, X64]
+    needs: build
 
     steps:
-
     - name: checkout
       uses: actions/checkout@v4
       with:
