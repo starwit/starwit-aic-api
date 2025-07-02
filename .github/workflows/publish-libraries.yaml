@@ -6,7 +6,6 @@ on:
       RELEASE_VERSION:
         description: "Set release version (required)"
         required: true
-  pull_request: 
 
 permissions:
   contents: write
