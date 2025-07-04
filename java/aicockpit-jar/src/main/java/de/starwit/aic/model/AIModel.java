@@ -51,7 +51,7 @@ import de.starwit.aic.JSON;
 /**
  * AIModel
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-09T14:33:40.173636065Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-30T15:54:47.424137967Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class AIModel {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

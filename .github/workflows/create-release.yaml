@@ -1,4 +1,4 @@
-name: Create release and publish
+name: Generate code and create release
 
 on:
   workflow_dispatch:
@@ -15,15 +15,12 @@ env:
 
 jobs:
   build:
-    name: "Create python lib, do maven and github release"
+    name: "Generate code for Python and Java. Create Github tag"
     runs-on: [self-hosted, linux, X64]
     outputs:
       VERSION_BUILD: ${{ steps.get-version.outputs.VERSION_BUILD }}     
     
     steps:
-    - name: Install GH CLI
-      uses: dev-hanz-ops/install-gh-cli-action@v0.2.0
-
     - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
@@ -86,7 +83,7 @@ jobs:
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Commit and push tag
+    - name: Commit generated code and changelog
       run: |
         git config --global user.email "code@starwit.de"
         git config --global user.name "Starwit"
@@ -101,19 +98,4 @@ jobs:
       env:
          CI: false
     
-    - name: Build Maven project
-      working-directory: ./java/aicockpit-jar
-      run: mvn clean -B package
-      env:
-         CI: false
-         MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-         MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
 
-    - name: Publish Maven package to Maven Central
-      working-directory: ./java/aicockpit-jar
-      run: mvn deploy --settings ${{ github.workspace }}/.github/workflows/settings.xml
-      env:
-        MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-        MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}        
-        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}

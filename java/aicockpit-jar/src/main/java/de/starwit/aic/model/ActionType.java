@@ -49,7 +49,7 @@ import de.starwit.aic.JSON;
 /**
  * A type of action that a system can execute
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-09T14:33:40.173636065Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-30T15:54:47.424137967Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class ActionType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
