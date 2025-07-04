@@ -27,8 +27,8 @@ class AIModelType(str, Enum):
     allowed enum values
     """
     LLM = 'LLM'
-    COMPUTERVISION = 'ComputerVision'
-    RULEBASED = 'RuleBased'
+    COMPUTERVISION = 'Computervision'
+    RULEBASED = 'Rulebased'
     MISC = 'Misc'
 
     @classmethod

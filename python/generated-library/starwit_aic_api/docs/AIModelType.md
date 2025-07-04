@@ -5,9 +5,9 @@
 
 * `LLM` (value: `'LLM'`)
 
-* `COMPUTERVISION` (value: `'ComputerVision'`)
+* `COMPUTERVISION` (value: `'Computervision'`)
 
-* `RULEBASED` (value: `'RuleBased'`)
+* `RULEBASED` (value: `'Rulebased'`)
 
 * `MISC` (value: `'Misc'`)
 

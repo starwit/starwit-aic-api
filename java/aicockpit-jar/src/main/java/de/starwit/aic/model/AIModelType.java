@@ -31,9 +31,9 @@ public enum AIModelType {
   
   LLM("LLM"),
   
-  COMPUTER_VISION("ComputerVision"),
+  COMPUTERVISION("Computervision"),
   
-  RULE_BASED("RuleBased"),
+  RULEBASED("Rulebased"),
   
   MISC("Misc");
 

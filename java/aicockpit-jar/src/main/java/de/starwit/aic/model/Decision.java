@@ -55,7 +55,7 @@ import de.starwit.aic.JSON;
 /**
  * An actual decision that a system made
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-30T15:54:47.424137967Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-07-04T12:43:11.182602420Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class Decision {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
