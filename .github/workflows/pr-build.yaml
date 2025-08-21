@@ -33,7 +33,13 @@ jobs:
     - name: Generate Java lib
       working-directory: ./java
       run: |
-        ./generate.sh     
+        ./generate.sh 
+
+    - name: Try to build Java lib
+      working-directory: ./java/aicockpit-jar
+      run: | 
+        mvn package --settings ${{ github.workspace }}/.github/workflows/settings.xml
+        ls -al ./target
 
   build-python:
     name: "Build Python"
@@ -70,3 +76,4 @@ jobs:
       working-directory: ./python/generated-library
       run: |
         poetry build
+        ls ./dist
