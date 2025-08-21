@@ -52,6 +52,11 @@ jobs:
     - name: Install Poetry
       uses: snok/install-poetry@v1
 
+    - name: Set Python lib version
+      working-directory: ./python/generated-library
+      run: |
+        poetry version ${{ env.RELEASE_VERSION }}      
+
     - name: build wheel
       working-directory: ./python/generated-library
       run: |
