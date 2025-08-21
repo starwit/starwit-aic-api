@@ -63,7 +63,7 @@ jobs:
       with:
         packages-dir: ./python/generated-library/dist
       env:
-        DOCKER_HOST: /run/user/1000/docker.sock
+        DOCKER_HOST: unix:///run/user/1000/docker.sock
 
   publish_java_lib:
     name: "Publish Java library"
