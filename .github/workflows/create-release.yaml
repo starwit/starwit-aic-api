@@ -62,24 +62,38 @@ jobs:
       working-directory: ./python/generated-library
       run: |
         poetry version ${{ env.RELEASE_VERSION }}
+
+    - name: build wheel
+      working-directory: ./python/generated-library
+      run: |
+        poetry build
     
     - name: Generate Java lib
       working-directory: ./java
       run: |
         ./generate.sh
 
-    - name: Set Java lib version and build
+    - name: Set Java lib version
       working-directory: ./java/aicockpit-jar
       run: | 
         echo "new version manually set to ${{ env.RELEASE_VERSION }}"
         mvn -B build-helper:parse-version versions:set -DnewVersion=${{ env.RELEASE_VERSION }} versions:commit --settings ${{ github.workspace }}/.github/workflows/settings.xml
+
+    - name: Build Java lib
+      working-directory: ./java/aicockpit-jar
+      run: | 
+        mvn package --settings ${{ github.workspace }}/.github/workflows/settings.xml
+      env:
+         CI: false
+         MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+         MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
 
     - name: Get tag name
       run: |
         echo "TAG=${{ env.RELEASE_VERSION }}" >> $GITHUB_ENV
 
     - name: Create github release
-      run: gh release create ${{ env.TAG }} -F CHANGELOG.md
+      run: gh release create ${{ env.TAG }} -F CHANGELOG.md ./java/aicockpit-jar/target/*.jar ./java/aicockpit-jar/target/*.asc ./python/generated-library/dist/*.whl ./python/generated-library/dist/*.tar.gz
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
