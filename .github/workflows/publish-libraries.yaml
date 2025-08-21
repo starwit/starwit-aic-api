@@ -14,13 +14,27 @@ env:
   RELEASE_VERSION: ${{ github.event.inputs.RELEASE_VERSION }}
 
 jobs:
-  publish_java_lib:
-    name: "Publish libraries"
+  publish_python_lib:
+    name: "Publish Java library"
     runs-on: [self-hosted, linux, X64]
 
     steps:
     - name: checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
+      with:
+        fetch-depth: '0'
+        ref: ${{ env.RELEASE_VERSION }}      
+
+    - name: TODO
+      run: echo "TODO"
+
+  publish_java_lib:
+    name: "Publish Java library"
+    runs-on: [self-hosted, linux, X64]
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v5
       with:
         fetch-depth: '0'
         ref: ${{ env.RELEASE_VERSION }}
@@ -35,6 +49,15 @@ jobs:
       uses: stCarolas/setup-maven@v5
       with:
          maven-version: 3.9.2
+
+    - name: check git tag
+      run: git status
+
+    - name: Set Java lib version
+      working-directory: ./java/aicockpit-jar
+      run: | 
+        echo "new version manually set to ${{ env.RELEASE_VERSION }}"
+        mvn -B build-helper:parse-version versions:set -DnewVersion=${{ env.RELEASE_VERSION }} versions:commit --settings ${{ github.workspace }}/.github/workflows/settings.xml
          
     - name: Build Maven project
       working-directory: ./java/aicockpit-jar
