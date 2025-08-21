@@ -40,6 +40,10 @@ jobs:
       run: | 
         mvn package --settings ${{ github.workspace }}/.github/workflows/settings.xml
         ls -al ./target
+      env:
+         CI: false
+         MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+         MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
 
   build-python:
     name: "Build Python"
