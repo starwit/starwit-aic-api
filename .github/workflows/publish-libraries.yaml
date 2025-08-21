@@ -14,7 +14,7 @@ env:
   RELEASE_VERSION: ${{ github.event.inputs.RELEASE_VERSION }}
 
 jobs:
-  publish_libs:
+  publish_java_lib:
     name: "Publish libraries"
     runs-on: [self-hosted, linux, X64]
 

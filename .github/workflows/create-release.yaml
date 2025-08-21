@@ -1,4 +1,4 @@
-name: Generate code and create release
+name: Generate code, create release and tag repo
 
 on:
   workflow_dispatch:

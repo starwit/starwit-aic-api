@@ -49,17 +49,6 @@ jobs:
       with:
         python-version: '3.12'
 
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: 21
-
-    - name: Set up Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-
     - name: Set up openapi-generator-cli
       run: |
         npm install @openapitools/openapi-generator-cli -g
@@ -76,3 +65,8 @@ jobs:
       working-directory: ./python/generated-library
       run: |
         poetry version ${{ env.RELEASE_VERSION }}
+
+    - name: build wheel
+      working-directory: ./python/generated-library
+      run: |
+        poetry build
