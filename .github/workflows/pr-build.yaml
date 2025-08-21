@@ -33,7 +33,17 @@ jobs:
     - name: Generate Java lib
       working-directory: ./java
       run: |
-        ./generate.sh     
+        ./generate.sh 
+
+    - name: Try to build Java lib
+      working-directory: ./java/aicockpit-jar
+      run: | 
+        mvn package --settings ${{ github.workspace }}/.github/workflows/settings.xml
+        ls -al ./target
+      env:
+         CI: false
+         MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+         MAVEN_GPG_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
 
   build-python:
     name: "Build Python"
@@ -76,3 +86,9 @@ jobs:
       working-directory: ./python/generated-library
       run: |
         poetry version ${{ env.RELEASE_VERSION }}
+
+    - name: build wheel
+      working-directory: ./python/generated-library
+      run: |
+        poetry build
+        ls ./dist

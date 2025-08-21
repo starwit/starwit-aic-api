@@ -4,7 +4,7 @@
 
     <groupId>de.starwit.aic</groupId>
     <artifactId>aicockpit-api</artifactId>
-    <version>0.1.5</version>
+    <version>0.1.6</version>
     <name>AI Cockpit interface API</name>
     <description>Data model for AI Cockpit interfaces</description>
     <url>http://starwit.de</url>
@@ -75,7 +75,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.10.1</version>
+            <version>2.13.1</version>
         </dependency>
         <dependency>
             <groupId>io.gsonfire</groupId>
@@ -90,7 +90,7 @@
         <dependency>
             <groupId>com.squareup.okio</groupId>
             <artifactId>okio</artifactId>
-            <version>3.9.0</version>
+            <version>3.12.0</version>
         </dependency>
     </dependencies>
 
