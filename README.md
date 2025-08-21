@@ -25,6 +25,15 @@ Add the following to your `pyproject.toml` dependencies section:\
 TODO publishing to PyPi.
 
 ## Dev
+
+This repo is not supposed to see actual development activity. Ir shall only contain generated code for various languages and is being used to publish libraries for each supported programming languages.
+
+### Publish
+
+Workflow [publish](.github/workflows/publish-libraries.yaml) is supposed to release Java lib to Maven Central and Python package to PyPi. You have to provide release version number, to publish artifact.
+
+In Maven central an uploaded library still has to be manually approved for publication. You have to use proper login at https://central.sonatype.com/.
+
 ### Run/Debug Github Actions locally
 `act -W .github/workflows/create-release.yaml --input-file local.inputs --secret-file local.secrets -P self-hosted=-self-hosted`
 

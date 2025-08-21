@@ -63,10 +63,10 @@ jobs:
         poetry build
         ls ./dist
 
-    - name: Publish package distributions to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        packages-dir: ./python/generated-library/dist
+    #- name: Publish package distributions to PyPI
+    #  uses: pypa/gh-action-pypi-publish@release/v1
+    #  with:
+    #    packages-dir: ./python/generated-library/dist
 
   publish_java_lib:
     name: "Publish Java library"

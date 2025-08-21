@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "aic_api"
+name = "starwit_aic_api"
 version = "0.1.6"
 description = ""
 authors = ["flonix8 <flstanek@googlemail.com>"]
