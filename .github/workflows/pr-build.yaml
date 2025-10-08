@@ -12,8 +12,6 @@ jobs:
   build-java:
     name: "Build java library"
     runs-on: [self-hosted, linux, X64]
-    container:
-      image: starwitorg/debian-packaging:0.0.3
 
     steps:    
     - name: Set up JDK 21
@@ -50,6 +48,8 @@ jobs:
   build-python:
     name: "Build Python"
     runs-on: [self-hosted, linux, X64]
+    container:
+      image: starwitorg/debian-packaging:0.0.3
 
     steps:    
     - name: checkout
