@@ -56,7 +56,7 @@ import de.starwit.aic.JSON;
 /**
  * Module
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-21T09:43:09.059871871Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-08T15:57:36.428944011Z[Etc/UTC]", comments = "Generator version: 7.14.0")
 public class Module {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -421,21 +421,10 @@ public class Module {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("version");
-    openapiFields.add("name");
-    openapiFields.add("applicationIdentifier");
-    openapiFields.add("description");
-    openapiFields.add("useAI");
-    openapiFields.add("model");
-    openapiFields.add("actionTypes");
-    openapiFields.add("decisionTypes");
-    openapiFields.add("sBOMLocation");
-    openapiFields.add("successors");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "version", "name", "applicationIdentifier", "description", "useAI", "model", "actionTypes", "decisionTypes", "sBOMLocation", "successors"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

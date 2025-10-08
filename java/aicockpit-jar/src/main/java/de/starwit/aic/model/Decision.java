@@ -55,7 +55,7 @@ import de.starwit.aic.JSON;
 /**
  * An actual decision that a system made
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-21T09:43:09.059871871Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-08T15:57:36.428944011Z[Etc/UTC]", comments = "Generator version: 7.14.0")
 public class Decision {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -450,21 +450,10 @@ public class Decision {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("acquisitionTime");
-    openapiFields.add("mediaUrl");
-    openapiFields.add("actionVisualizationUrl");
-    openapiFields.add("cameraLatitude");
-    openapiFields.add("cameraLongitude");
-    openapiFields.add("state");
-    openapiFields.add("description");
-    openapiFields.add("module");
-    openapiFields.add("decisionType");
-    openapiFields.add("actions");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "acquisitionTime", "mediaUrl", "actionVisualizationUrl", "cameraLatitude", "cameraLongitude", "state", "description", "module", "decisionType", "actions"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

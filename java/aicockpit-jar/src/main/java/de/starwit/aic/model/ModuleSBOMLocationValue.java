@@ -48,7 +48,7 @@ import de.starwit.aic.JSON;
 /**
  * ModuleSBOMLocationValue
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-21T09:43:09.059871871Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-08T15:57:36.428944011Z[Etc/UTC]", comments = "Generator version: 7.14.0")
 public class ModuleSBOMLocationValue {
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -121,11 +121,10 @@ public class ModuleSBOMLocationValue {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("url");
+    openapiFields = new HashSet<String>(Arrays.asList("url"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
