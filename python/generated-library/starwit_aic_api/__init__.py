@@ -3,7 +3,7 @@
 # flake8: noqa
 
 """
-    AI Cockpit Transparency
+    AI Cockpit Decisions
 
     This API is part of project AI cockpit.   For more details see: https://www.kicockpit.eu/ 
 
@@ -30,7 +30,9 @@ __all__ = [
     "ApiException",
     "AIModel",
     "AIModelType",
+    "Action",
     "ActionType",
+    "Decision",
     "DecisionType",
     "Info",
     "Module",
@@ -54,7 +56,9 @@ from starwit_aic_api.exceptions import ApiException as ApiException
 # import models into sdk package
 from starwit_aic_api.models.ai_model import AIModel as AIModel
 from starwit_aic_api.models.ai_model_type import AIModelType as AIModelType
+from starwit_aic_api.models.action import Action as Action
 from starwit_aic_api.models.action_type import ActionType as ActionType
+from starwit_aic_api.models.decision import Decision as Decision
 from starwit_aic_api.models.decision_type import DecisionType as DecisionType
 from starwit_aic_api.models.info import Info as Info
 from starwit_aic_api.models.module import Module as Module

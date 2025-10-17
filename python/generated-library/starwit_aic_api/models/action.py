@@ -18,19 +18,23 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from starwit_aic_api.models.action_type import ActionType
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Info(BaseModel):
+class Action(BaseModel):
     """
-    Info
+    An actual action that a system executes
     """ # noqa: E501
-    generation_date: Optional[datetime] = Field(default=None, alias="generation-date")
-    system_description: Optional[StrictStr] = Field(default=None, alias="systemDescription")
-    api_version: Optional[StrictStr] = Field(default=None, alias="apiVersion")
-    __properties: ClassVar[List[str]] = ["generation-date", "systemDescription", "apiVersion"]
+    id: Optional[StrictInt] = None
+    creation_time: Optional[datetime] = Field(default=None, alias="creationTime")
+    name: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
+    action_type: Optional[ActionType] = Field(default=None, alias="actionType")
+    metadata: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "creationTime", "name", "description", "actionType", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +54,7 @@ class Info(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Info from a JSON string"""
+        """Create an instance of Action from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,11 +75,14 @@ class Info(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of action_type
+        if self.action_type:
+            _dict['actionType'] = self.action_type.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Info from a dict"""
+        """Create an instance of Action from a dict"""
         if obj is None:
             return None
 
@@ -83,9 +90,12 @@ class Info(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "generation-date": obj.get("generation-date"),
-            "systemDescription": obj.get("systemDescription"),
-            "apiVersion": obj.get("apiVersion")
+            "id": obj.get("id"),
+            "creationTime": obj.get("creationTime"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "actionType": ActionType.from_dict(obj["actionType"]) if obj.get("actionType") is not None else None,
+            "metadata": obj.get("metadata")
         })
         return _obj
 
