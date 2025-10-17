@@ -15,10 +15,12 @@ rm -rf ${PACKAGING_DIR}/starwit_aic_api/
 
 mkdir -p ${GENERATOR_TARGET}
 
-INPUT_FILES=""
-for file in spec_files/*.yaml; do
-    INPUT_FILES+="-i $file "
-done
+#INPUT_FILES=""
+#for file in spec_files/*.yaml; do
+#    INPUT_FILES+="-i $file "
+#done
+
+INPUT_FILES="-i spec_files/decision-api.yaml"
 
 echo "using input file parameters: ${INPUT_FILES}"
 
